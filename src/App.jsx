@@ -9,6 +9,10 @@ import Categories from './components/Categories/Categories'
 import Brands from './components/Brands/Brands'
 import Login from './components/Login/Login'
 import Signup from './components/Signup/Signup'
+import ForgetPassword from './components/ForgetPassword/ForgetPassword'
+import UpdatePassword from './components/UpdatePassword/UpdatePassword'
+import AuthContextProvider from './Context/AuthContextProvider'
+import ProtectedRouting from './components/ProtectedRouting/ProtectedRouting'
 export default function app() {
 
 
@@ -16,17 +20,22 @@ export default function app() {
         {
             path: '', element: <Layout></Layout>, children: [
                 { index: true, element: <Signup></Signup> },
-                { path: 'cart', element: <Cart></Cart> },
-                { path: 'product', element: <Product></Product> },
-                { path: 'categories', element: <Categories></Categories> },
+                { path: 'home', element: <ProtectedRouting><Home></Home> </ProtectedRouting> },
+                { path: 'cart', element: <ProtectedRouting><Cart></Cart></ProtectedRouting> },
+                { path: 'product', element: <ProtectedRouting><Product></Product></ProtectedRouting> },
+                { path: 'categories', element: <ProtectedRouting><Categories></Categories></ProtectedRouting>},
+                { path: 'brands', element:<ProtectedRouting><Brands></Brands></ProtectedRouting> },
                 { path: 'login', element: <Login></Login> },
-                { path: 'brands', element: <Brands></Brands> },
-                { path: 'home', element: <Home></Home> },
+                { path: 'forgetPassword', element: <ForgetPassword></ForgetPassword> },
+                { path: 'UpdatePassword', element: <UpdatePassword></UpdatePassword> },
             ]
         },
     ])
 
     return (
-        <RouterProvider router={route}></RouterProvider>
+
+        <AuthContextProvider>
+            <RouterProvider router={route}></RouterProvider>
+        </AuthContextProvider>
     )
 }

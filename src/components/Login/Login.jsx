@@ -1,10 +1,14 @@
 import * as Yup from "yup";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
+import { AuthContext } from "../../Context/AuthContextProvider";
 
 export default function Login() {
+
+  let { setToken } = useContext(AuthContext)
+
   let [errorMessage, setError] = useState(null);
 
   const baseUrl = "https://ecommerce.routemisr.com";
@@ -28,6 +32,12 @@ export default function Login() {
       .then((req) => {
         console.log(req.data);
         if (req.data.message == "success") {
+
+          setToken(req.data.token)
+          localStorage.setItem('token', req.data.token)
+
+
+
           navg("/home");
         }
       })
@@ -83,6 +93,7 @@ export default function Login() {
           ) : (
             ""
           )}
+          <Link to='/forgetPassword' className="mt-6 block hover:text-sky-600">Forget Password ?</Link>
         </div>
         <button
           type="submit"

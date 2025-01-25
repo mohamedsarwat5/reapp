@@ -1,17 +1,22 @@
-import React from 'react'
-import logo from '../../assets/images/freshcart-logo.svg'
-import { Link, NavLink } from 'react-router-dom'
-
-
-
+import React, { useContext } from 'react';
+import logo from '../../assets/images/freshcart-logo.svg';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContextProvider';
 
 export default function Navbar() {
-    
+    let { token, setToken } = useContext(AuthContext);
+    let navg = useNavigate();
+
+    function logout() {
+        localStorage.removeItem('token');
+        setToken(null);
+        navg('/login');
+    }
+
+
     return (
+
         <>
-
-
-
             <nav className="bg-white shadow-md border-gray-200 dark:bg-gray-900">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
@@ -28,7 +33,8 @@ export default function Navbar() {
                         </button>
 
                         {/* ************** TABS******************** */}
-                        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+
+                        {token ? <div className="hidden w-full md:block md:w-auto" id="navbar-default">
                             <ul className="font-medium text-xl flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                                 <li>
                                     <NavLink to="/home" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500">Home</NavLink>
@@ -46,12 +52,14 @@ export default function Navbar() {
                                     <NavLink to="/brands" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Brands</NavLink>
                                 </li>
                             </ul>
-                        </div>
+                        </div> : ''}
+
+
                     </div>
 
                     {/* *********************** SOCIAL ICONS *****************/}
-                    <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-                        <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <div className="hidden w-full md:block md:w-auto" id="np">
+                        <ul className="font-medium flex  gap-4 justify-center  p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                             <li>
                                 <Link>
                                     <i className="fa-brands fa-instagram"></i>
@@ -83,12 +91,15 @@ export default function Navbar() {
                                 </Link>
                             </li>
 
-                            <li>
-                                <NavLink to= '/login'> Login</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to= '/'> Register</NavLink>
-                            </li>
+                            {token ? <li onClick={logout} className='hover:cursor-pointer'>
+                                <span>Logout</span></li> : <><li>
+                                    <NavLink to='/login'> Login</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/'> Register</NavLink>
+                                </li></>}
+
+
 
                         </ul>
                     </div>
