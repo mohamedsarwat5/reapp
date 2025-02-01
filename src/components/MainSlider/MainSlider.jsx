@@ -59,7 +59,7 @@ export default function MainSlider() {
     return (
 
         <div className="flex">
-            <div className="w-full md:w-9/12">
+            <div className="w-full md:w-9/12 mx-auto">
                 <Slider  {...settings} >
                     <div>
                         <img src={img1} className="w-full h-96  object-cover" alt="" />
