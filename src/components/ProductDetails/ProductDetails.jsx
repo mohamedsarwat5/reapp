@@ -7,10 +7,15 @@ export default function ProductDetails() {
 
     let [product, setProduct] = useState(null)
     let { id } = useParams()
+    let [loading, setLoading] = useState(true)
 
     function getDetails(id) {
+    setLoading(true)
+
         axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`).then(req => {
             setProduct(req.data.data)
+        setLoading(false)
+
         })
 
     }
@@ -19,7 +24,11 @@ export default function ProductDetails() {
     }, [id])
 
     return (<>
-        <div className='w-10/12 mx-auto my-10 '>
+
+
+    {loading?<div className='flex justify-center items-center bg-slate-300 h-screen'>
+      <span className="loader"></span>
+    </div> : <div className='w-10/12 mx-auto my-10 '>
             <div className='flex justify-center flex-wrap items-center'>
                 <div className='md:w-3/12 w-full mb-7'>
                     {/* <img src={product?.imageCover} className='w-full' alt="" /> */}
@@ -46,7 +55,8 @@ export default function ProductDetails() {
                         Add to Cart <i className="fa-solid fa-cart-shopping ml-2"></i></button>
                 </div>
             </div>
-        </div>
+        </div>}
+       
     </>
     )
 }

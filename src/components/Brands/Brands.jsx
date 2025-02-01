@@ -35,7 +35,7 @@ export default function Brands() {
         {allBrands?.map((brand) => {
           let { name, image, _id } = brand
           return <>
-            <div key={_id} className='lg:w-2/12 md:w-3/12 sm:w-6/12 w-full px-3 '>
+            <div key={_id} className='lg:w-2/12 md:w-3/12 sm:w-6/12 w-full px-3 py-11'>
 
 
                 <div className="item p-3 group overflow-hidden  ">
@@ -47,10 +47,6 @@ export default function Brands() {
           </>
         })}
       </div>
-
-
-
-
     </div>}
 
 
