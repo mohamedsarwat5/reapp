@@ -17,7 +17,7 @@ export default function Navbar() {
     return (
 
         <>
-            <nav className="bg-white shadow-md  border-gray-200 dark:bg-gray-900 sticky top-0 z-10">
+            <nav className="bg-white shadow-md  border-gray-200 dark:bg-gray-900 fixed left-0 end-0 top-0 z-10">
                 <div className="max-w-screen-xl flex  items-center justify-between mx-auto p-4">
 
 
@@ -30,21 +30,21 @@ export default function Navbar() {
                         {/* ************** TABS******************** */}
 
                         {token ? <div className="hidden w-full md:block md:w-auto absolute left-0 top-10 md:relative md:top-0" id="navbar-default">
-                            <ul className="font-medium  text-xl flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                            <ul className="font-medium  text-xl flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row  gap-5  md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                                 <li>
-                                    <NavLink to="/home" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500">Home</NavLink>
+                                    <NavLink to="/home" className="block py-2 px-3 bg-active-700 rounded md:bg-transparent md:text-active-700 md:p-0 dark:text-white md:dark:text-active-500">Home</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/cart" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Cart</NavLink>
+                                    <NavLink to="/cart" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-active-700 md:p-0 dark:text-white md:dark:hover:text-active-500">Cart</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/product" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Products</NavLink>
+                                    <NavLink to="/product" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-active-700 md:p-0 dark:text-white md:dark:hover:text-active-500">Products</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/categories" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Categories</NavLink>
+                                    <NavLink to="/categories" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-active-700 md:p-0 dark:text-white md:dark:hover:text-active-500">Categories</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/brands" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500">Brands</NavLink>
+                                    <NavLink to="/brands" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-active-700 md:p-0 dark:text-white md:dark:hover:text-active-500">Brands</NavLink>
                                 </li>
                             </ul>
                         </div> : ''}

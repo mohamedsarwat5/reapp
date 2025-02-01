@@ -6,7 +6,11 @@ export default {
     flowbite.content(),
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        "active": "#0aad0a"
+      }
+    },
   },
   plugins: [  flowbite.plugin(),],
 };
