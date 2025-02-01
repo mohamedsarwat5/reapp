@@ -19,7 +19,7 @@ export default function ProductDetails() {
     }, [id])
 
     return (<>
-        <div className='w-10/12 mx-auto my-5 '>
+        <div className='w-10/12 mx-auto my-10 '>
             <div className='flex justify-center flex-wrap items-center'>
                 <div className='md:w-3/12 w-full mb-7'>
                     {/* <img src={product?.imageCover} className='w-full' alt="" /> */}
