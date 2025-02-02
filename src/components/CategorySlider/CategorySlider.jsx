@@ -62,7 +62,7 @@ export default function CategorySlider() {
                 {categoryList?.map(el => {
                     return (
                         <div key={el._id}>
-                            <img src={el.image} className='h-48 w-full object-cover object-top' alt="" />
+                            <img src={el.image} className='h-48 w-48 mx-auto rounded-full  object-cover object-top' alt="" />
                             <h5 className='text-center font-bold mt-2'>{el.name}</h5>
                         </div>
                     )
