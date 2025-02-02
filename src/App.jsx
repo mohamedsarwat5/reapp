@@ -15,10 +15,13 @@ import AuthContextProvider from './Context/AuthContextProvider'
 import ProtectedRouting from './components/ProtectedRouting/ProtectedRouting'
 import ProductDetails from './components/ProductDetails/ProductDetails'
 import Notfound from './components/Notfound/Notfound'
-
+import { useEffect } from "react";
+import "flowbite";
 export default function app() {
 
-
+    useEffect(() => {
+        import("flowbite").then((flowbite) => flowbite.init());
+    }, []);
     let route = createBrowserRouter([
         {
             path: '', element: <Layout></Layout>, children: [

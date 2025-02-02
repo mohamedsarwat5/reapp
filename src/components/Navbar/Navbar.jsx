@@ -32,19 +32,19 @@ export default function Navbar() {
                         {token ? <div className="hidden  md:flex md:justify-between w-full gap-80 absolute left-0 top-10 md:relative md:top-0" id="navbar-default">
                             <ul className="font-medium  text-xl flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row  gap-5  md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                                 <li>
-                                    <NavLink to="/home" className="block py-2 px-3 bg-active-700 rounded md:bg-transparent md:text-active-700 md:p-0 dark:text-white md:dark:text-active-500">Home</NavLink>
+                                    <NavLink to="/home" className=" hover:cursor-pointer hover:text-active duration-150 block py-2 px-3 bg-active-700 rounded md:bg-transparent md:text-active-700 md:p-0 dark:text-white md:dark:text-active-500">Home</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/cart" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-active-700 md:p-0 dark:text-white md:dark:hover:text-active-500">Cart</NavLink>
+                                    <NavLink to="/cart" className=" hover:cursor-pointer hover:text-active duration-150 block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-active-700 md:p-0 dark:text-white md:dark:hover:text-active-500">Cart</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/product" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-active-700 md:p-0 dark:text-white md:dark:hover:text-active-500">Products</NavLink>
+                                    <NavLink to="/product" className=" hover:cursor-pointer hover:text-active duration-150 block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-active-700 md:p-0 dark:text-white md:dark:hover:text-active-500">Products</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/categories" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-active-700 md:p-0 dark:text-white md:dark:hover:text-active-500">Categories</NavLink>
+                                    <NavLink to="/categories" className=" hover:cursor-pointer hover:text-active duration-150 block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-active-700 md:p-0 dark:text-white md:dark:hover:text-active-500">Categories</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/brands" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-active-700 md:p-0 dark:text-white md:dark:hover:text-active-500">Brands</NavLink>
+                                    <NavLink to="/brands" className=" hover:cursor-pointer hover:text-active duration-150 block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-active-700 md:p-0 dark:text-white md:dark:hover:text-active-500">Brands</NavLink>
                                 </li>
                             </ul>
 
@@ -54,32 +54,32 @@ export default function Navbar() {
                             <ul className="font-medium  ms-auto flex items-center gap-4 w-full justify-center  bg-gray-50  md:bg-white  md:pb-0 pb-3  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                                 <li>
                                     <Link>
-                                        <i className="fa-brands fa-instagram"></i>
+                                        <i className="hover:cursor-pointer hover:text-active duration-150 fa-brands fa-instagram"></i>
                                     </Link>
                                 </li>
                                 <li>
                                     <Link>
-                                        <i className="fa-brands fa-facebook"></i>
+                                        <i className="hover:cursor-pointer hover:text-active duration-150 fa-brands fa-facebook"></i>
                                     </Link>
                                 </li>
                                 <li>
                                     <Link>
-                                        <i className="fa-brands fa-twitter"></i>
+                                        <i className="hover:cursor-pointer hover:text-active duration-150 fa-brands fa-twitter"></i>
                                     </Link>
                                 </li>
                                 <li>
                                     <Link>
-                                        <i className="fa-brands fa-tiktok"></i>
+                                        <i className="hover:cursor-pointer hover:text-active duration-150 fa-brands fa-tiktok"></i>
                                     </Link>
                                 </li>
                                 <li>
                                     <Link>
-                                        <i className="fa-brands fa-linkedin"></i>
+                                        <i className="hover:cursor-pointer hover:text-active duration-150 fa-brands fa-linkedin"></i>
                                     </Link>
                                 </li>
                                 <li>
                                     <Link>
-                                        <i className="fa-brands fa-youtube"></i>
+                                        <i className="hover:cursor-pointer hover:text-active duration-150 fa-brands fa-youtube"></i>
                                     </Link>
                                 </li>
 
@@ -99,11 +99,11 @@ export default function Navbar() {
 
                     <div className="ms-auto" >
                         <ul className='flex items-center gap-3 '>
-                            {token ? <li onClick={logout} className='hover:cursor-pointer'>
-                                <span>Logout</span></li> : <><li>
+                            {token ? <li onClick={logout} className='hover:cursor-pointer hover:text-active'>
+                                <span>Logout</span></li> : <><li className='hover:cursor-pointer hover:text-active'>
                                     <NavLink to='/'> Login</NavLink>
                                 </li>
-                                <li>
+                                <li className='hover:cursor-pointer hover:text-active'>
                                     <NavLink to='/signup'> Register</NavLink>
                                 </li></>}
                         </ul>
