@@ -1,5 +1,5 @@
 import React from 'react'
-import img from "../../assets/images/404.png"
+import img from "../../assets/images/error.svg"
 export default function Notfound() {
     return (
         <div>

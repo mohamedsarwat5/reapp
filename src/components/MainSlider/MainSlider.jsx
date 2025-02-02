@@ -4,6 +4,12 @@ import Slider from "react-slick";
 import img1 from '../../assets/images/slider-image-1.jpeg'
 import img2 from '../../assets/images/slider-image-2.jpeg'
 import img3 from '../../assets/images/slider-image-3.jpeg'
+import img4 from '../../assets/images/banner-4.jpeg'
+import img5 from '../../assets/images/blog-img-1.jpeg'
+import img6 from '../../assets/images/blog-img-2.jpeg'
+import img7 from '../../assets/images/grocery-banner.png'
+import img8 from '../../assets/images/grocery-banner-2.jpeg'
+import img9 from '../../assets/images/slider-2.jpeg'
 
 
 
@@ -12,11 +18,10 @@ export default function MainSlider() {
     var settings = {
         dots: false,
         infinite: true,
-        speed: 200,
+        speed: 300,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        speed: 200,
         arrows: false,
         infinite: true,
         responsive: [
@@ -26,8 +31,8 @@ export default function MainSlider() {
                     slidesToShow: 1,
                     slidesToScroll: 3,
                     infinite: true,
-                    dots: true,
-                    speed: 200,
+                    dots: false,
+                    speed: 300,
                     infinite: true,
                     autoplay: true,
                 }
@@ -58,25 +63,47 @@ export default function MainSlider() {
     };
     return (
 
-        <div className="flex">
-            <div className="w-full md:w-9/12 mx-auto">
+
+        <div className="md:flex  w-full gap-0 mt-24 ">
+
+            <div className="w-full md:w-9/12 mx-auto ">
                 <Slider  {...settings} >
                     <div>
-                        <img src={img1} className="w-full h-96  object-cover" alt="" />
+                        <img src={img1} className="w-full h-96  object-cover object-center" alt="" />
                     </div>
                     <div>
                         <img src={img2} className="w-full h-96  object-cover" alt="" />
                     </div>
                     <div>
-                        <img src={img3} className="w-full h-96  object-cover" alt="" />
+                        <img src={img3} className="w-full h-96  object-cover  " alt="" />
+                    </div>
+                    <div>
+                        <img src={img4} className="w-full h-96  object-cover" alt="" />
+                    </div>
+                    <div>
+                        <img src={img5} className="w-full h-96  object-cover" alt="" />
+                    </div>
+                    <div>
+                        <img src={img6} className="w-full h-96  object-cover" alt="" />
+                    </div>
+                    <div>
+                        <img src={img7} className="w-full h-96  object-cover" alt="" />
+                    </div>
+                    <div>
+                        <img src={img8} className="w-full h-96  object-cover" alt="" />
+                    </div>
+                    <div>
+                        <img src={img9} className="w-full h-96  object-cover" alt="" />
                     </div>
 
                 </Slider>
             </div>
-            <div className=" w-0  md:w-3/12">
-                <div><img src={img1} className=" md:h-48" alt="" /></div>
-                <div><img src={img2} className=" md:h-48" alt="" /></div>
+
+            <div className=" w-full flex md:flex-col flex-row gap-0 md:w-3/12">
+                <div><img src={img3} className=" md:h-48 w-full object-cover" alt="" /></div>
+                <div><img src={img2} className=" md:h-48 w-full object-cover" alt="" /></div>
             </div>
+
         </div>
 
 

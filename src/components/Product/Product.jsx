@@ -43,7 +43,7 @@ export default function Home() {
                 {allProducts?.map((product) => {
                     let { _id } = product
                     return <>
-                        <div key={_id} className='lg:w-2/12 md:w-3/12 sm:w-6/12 w-full px-3 '>
+                        <div key={_id} className='lg:w-2/12 md:w-4/12 sm:w-6/12 w-full px-3 '>
                             <Link to={'/ProductDetails/' + _id}>
 
 
