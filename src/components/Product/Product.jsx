@@ -57,7 +57,7 @@ export default function Home() {
                                             <i className='fa-solid fa-star text-yellow-400'></i>{product.ratingsAverage}
                                         </span>
                                     </div>
-                                    <button className="flex justify-center items-center translate-y-24 group-hover:translate-y-0 hover:bg-blue-900 duration-200 bg-blue-700 text-white px-6 py-2 rounded-lg w-full mt-4">
+                                    <button className="flex justify-center items-center translate-y-24 group-hover:translate-y-0 hover:bg-green-600 duration-200 bg-active text-white px-6 py-2 rounded-lg w-full mt-4">
                                         Add to Cart <i className="fa-solid fa-cart-shopping ml-2"></i></button>
                                 </div>
                             </Link>

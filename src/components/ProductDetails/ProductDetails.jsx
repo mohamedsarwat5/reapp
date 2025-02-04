@@ -10,11 +10,11 @@ export default function ProductDetails() {
     let [loading, setLoading] = useState(true)
 
     function getDetails(id) {
-    setLoading(true)
+        setLoading(true)
 
         axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`).then(req => {
             setProduct(req.data.data)
-        setLoading(false)
+            setLoading(false)
 
         })
 
@@ -26,9 +26,9 @@ export default function ProductDetails() {
     return (<>
 
 
-    {loading?<div className='flex justify-center items-center bg-slate-300 h-screen'>
-      <span className="loader"></span>
-    </div> : <div className='w-10/12 mx-auto my-10 '>
+        {loading ? <div className='flex justify-center items-center bg-slate-300 h-screen '>
+            <span className="loader"></span>
+        </div> : <div className='w-10/12 mx-auto mt-24'>
             <div className='flex justify-center flex-wrap items-center'>
                 <div className='md:w-3/12 w-full mb-7'>
                     {/* <img src={product?.imageCover} className='w-full' alt="" /> */}
@@ -51,12 +51,12 @@ export default function ProductDetails() {
                             <i className='fa-solid fa-star text-yellow-400'></i>{product?.ratingsAverage}
                         </span>
                     </div>
-                    <button className="flex justify-center items-center hover:bg-blue-900 duration-200 bg-blue-700 text-white px-6 py-2 rounded-lg w-full mt-4">
+                    <button className="flex justify-center items-center hover:bg-green-600 duration-200 bg-active text-white px-6 py-2 rounded-lg w-full mt-4">
                         Add to Cart <i className="fa-solid fa-cart-shopping ml-2"></i></button>
                 </div>
             </div>
         </div>}
-       
+
     </>
     )
 }
