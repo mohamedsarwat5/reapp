@@ -3,44 +3,35 @@ import React, { useEffect, useState } from 'react'
 import MainSlider from '../MainSlider/MainSlider'
 import CategorySlider from '../CategorySlider/CategorySlider'
 import { Link } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
 
 export default function Home() {
 
-    let [allProducts, setAllProducts] = useState(null)
-    let [pageNumber, setPageNumber] = useState(null)
-    let [loading, setLoading] = useState(true)
 
-    function getAllProducts(page = 1) {
-        setLoading(true)
-        axios.get(`https://ecommerce.routemisr.com/api/v1/products?limit=12&page=${page}`)
-            .then(req => {
-                setAllProducts(req.data.data)
-                let nums = []
-                for (let i = 1; i <= req.data.metadata.numberOfPages; i++) {
-                    nums.push(i)
-                    setPageNumber(nums)
-                }
 
-                setLoading(false)
-            })
+    function getAllProducts() {
+        return axios.get(`https://ecommerce.routemisr.com/api/v1/products`)
     }
 
-    useEffect(() => {
-        getAllProducts()
-    }, [])
+    let { data, isLoading } = useQuery({
+        queryKey: ['allProducts'],
+        queryFn: getAllProducts,
+    })
 
-    function getPageNumber(e) {
-        let page = e.target.getAttribute('page')
-        getAllProducts(page)
+    console.log()
+    if (isLoading) {
+        return <div className='h-screen w-screen flex justify-center items-center bg-slate-300'>
+            <span className="loader"></span>
+        </div>
     }
+
+
 
     return (<>
 
-        {loading ? <div className='flex justify-center items-center bg-slate-300 h-screen '>
-            <span className="loader"></span>
-        </div> : <div className="w-11/12 my-5 mx-auto">
+        <div className="w-11/12 my-5 mx-auto">
             <div className='flex flex-wrap py-20 '>
-                {allProducts?.map((product) => {
+                {data?.data?.data.map((product) => {
                     let { _id } = product
                     return <>
                         <div key={_id} className='lg:w-2/12 md:w-4/12 sm:w-6/12 w-full px-3 '>
@@ -66,29 +57,10 @@ export default function Home() {
                 })}
             </div>
 
-            <nav aria-label="Page navigation example ">
-                <ul className="flex items-center justify-center -space-x-px text-sm my-4 cursor-pointer">
-                    <li>
-                        <a href="#" className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-                    </li>
-                    {pageNumber?.map((el) => {
-                        return (
-                            <li onClick={getPageNumber} key={el}>
-                                <a page={el} className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{el}</a>
-                            </li>
-                        )
-                    })}
 
 
 
-                    <li>
-                        <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-                    </li>
-                </ul>
-            </nav>
-
-
-        </div>}
+        </div>
 
 
 

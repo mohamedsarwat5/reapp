@@ -17,7 +17,10 @@ import ProductDetails from './components/ProductDetails/ProductDetails'
 import Notfound from './components/Notfound/Notfound'
 import { useEffect } from "react";
 import "flowbite";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 export default function app() {
+
+    let queryclient = new QueryClient()
 
     useEffect(() => {
         import("flowbite").then((flowbite) => flowbite.init());
@@ -42,8 +45,12 @@ export default function app() {
 
     return (
 
-        <AuthContextProvider>
-            <RouterProvider router={route}></RouterProvider>
-        </AuthContextProvider>
+
+        <QueryClientProvider client={queryclient}>
+            <AuthContextProvider>
+                <RouterProvider router={route}></RouterProvider>
+            </AuthContextProvider>
+        </QueryClientProvider>
+
     )
 }

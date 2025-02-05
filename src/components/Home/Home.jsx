@@ -43,25 +43,25 @@ export default function Home() {
       <CategorySlider></CategorySlider>
       <div className='flex flex-wrap  '>
         {allProducts?.map((product) => {
-          let{_id} = product
+          let { _id } = product
           return <>
             <div key={_id} className='lg:w-2/12 md:w-3/12 sm:w-6/12 w-full px-3 '>
-            <Link to={'/ProductDetails/'+_id}>
-            
-          
-              <div className="item p-3 group overflow-hidden cursor-pointer ">
-                <img src={product.imageCover} alt={product.title} className='w-full' />
-                <h5 className='font-bold mt-5 text-lg'>{product.title.split(" ").slice(0, 2).join(" ")}</h5>
-                <p className='mb-2'>{product.category.name}</p>
-                <div className='flex justify-between items-center '>
-                  <p className='text-green-800 font-bold'>{product.price} EGP</p>
-                  <span>
-                    <i className='fa-solid fa-star text-yellow-400'></i>{product.ratingsAverage}
-                  </span>
+              <Link to={'/ProductDetails/' + _id}>
+
+
+                <div className="item p-3 group overflow-hidden cursor-pointer ">
+                  <img src={product.imageCover} alt={product.title} className='w-full' />
+                  <h5 className='font-bold mt-5 text-lg'>{product.title.split(" ").slice(0, 2).join(" ")}</h5>
+                  <p className='mb-2'>{product.category.name}</p>
+                  <div className='flex justify-between items-center '>
+                    <p className='text-green-800 font-bold'>{product.price} EGP</p>
+                    <span>
+                      <i className='fa-solid fa-star text-yellow-400'></i>{product.ratingsAverage}
+                    </span>
+                  </div>
+                  <button className="flex justify-center items-center translate-y-24 group-hover:translate-y-0 hover:bg-green-600 duration-200 bg-active text-white px-6 py-2 rounded-lg w-full mt-4">
+                    Add to Cart <i className="fa-solid fa-cart-shopping ml-2"></i></button>
                 </div>
-                <button className="flex justify-center items-center translate-y-24 group-hover:translate-y-0 hover:bg-green-600 duration-200 bg-active text-white px-6 py-2 rounded-lg w-full mt-4">
-                  Add to Cart <i className="fa-solid fa-cart-shopping ml-2"></i></button>
-              </div>
               </Link>
             </div>
           </>
