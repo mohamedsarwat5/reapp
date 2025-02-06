@@ -47,7 +47,7 @@ export default function Login() {
   }
 
   return (
-    <div className="mt-16 h-screen ">
+    <div className="mt-16 ">
       <h2 className="text-center font-bold py-6 text-3xl">Login Now</h2>
 
       <form onSubmit={LoginForm.handleSubmit} className="max-w-sm mx-auto px-3">
