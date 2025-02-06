@@ -8,15 +8,14 @@ export default function Navbar() {
     let navg = useNavigate();
     let button = document.getElementById("button")
     let menu = document.getElementById('menu')
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     function logout() {
         localStorage.removeItem('token');
         setToken(null);
         navg('/');
     }
     function toggleMenu() {
-        button.addEventListener('click', () => {
-            menu.classList.toggle('hidden')
-        })
+        setIsMenuOpen(prev => !prev);
     }
 
     return (
@@ -30,7 +29,7 @@ export default function Navbar() {
                         <Link to="/home" className="me-10  ">
                             <img src={logo} className="h-8" alt="freshCart" />
                         </Link>
-                        {token ? <div className=" hidden  md:flex md:justify-between w-full gap-80 absolute left-0 top-12 md:relative md:top-0" id="menu">
+                        {token ? <div className={`${isMenuOpen ? '' : 'hidden'} md:flex md:justify-between w-full gap-80 absolute left-0 top-12 md:relative md:top-0`}>
                             <ul className="font-medium  text-xl flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row  gap-5  md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                                 <li>
                                     <NavLink to="/home" className=" hover:cursor-pointer hover:text-active duration-150 block py-2 px-3 bg-active-700 rounded md:bg-transparent md:text-active-700 md:p-0 dark:text-white md:dark:text-active-500">Home</NavLink>
