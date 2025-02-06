@@ -22,9 +22,7 @@ export default function app() {
 
     let queryclient = new QueryClient()
 
-    useEffect(() => {
-        import("flowbite").then((flowbite) => flowbite.init());
-    }, []);
+
     let route = createBrowserRouter([
         {
             path: '', element: <Layout></Layout>, children: [

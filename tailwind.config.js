@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       colors: {
         active: "#0aad0a",
+        bgg:"#f0f3f2",
       },
     },
   },

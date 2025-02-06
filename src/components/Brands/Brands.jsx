@@ -4,15 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Brands() {
-
-
-
-
-
-
   function getallBrands() {
     return axios.get(`https://ecommerce.routemisr.com/api/v1/brands`)
-
   }
 
   let { data, isLoading } = useQuery({
@@ -36,12 +29,9 @@ export default function Brands() {
           let { name, image, _id } = brand
           return <>
             <div key={_id} className='lg:w-2/12 md:w-3/12 sm:w-6/12 w-full px-3 py-11'>
-
-
               <div className="item p-3 group overflow-hidden  ">
                 <img src={image} alt={name} className='w-full' />
                 <h5 className='font-bold mt-5 text-lg text-center'>{name}</h5>
-
               </div>
             </div>
           </>
@@ -49,10 +39,6 @@ export default function Brands() {
       </div>
     </div>
 
-
-
-
   </>
-
   )
 }
