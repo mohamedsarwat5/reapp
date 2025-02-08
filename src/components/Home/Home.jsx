@@ -1,14 +1,29 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import MainSlider from '../MainSlider/MainSlider'
 import CategorySlider from '../CategorySlider/CategorySlider'
 import { Link } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { CartContext } from '../../Context/CartContext'
+import toast from 'react-hot-toast'
 
 export default function Home() {
-
+  let { addToCart } = useContext(CartContext)
   let [allProducts, setAllProducts] = useState(null)
   let [pageNumber, setPageNumber] = useState(null)
   let [loading, setLoading] = useState(true)
+
+  async function addProductToCart(productId) {
+    let response = await addToCart(productId)
+
+    if (response.data.status === "success") {
+      toast.success("Product added to your cart", {
+        duration: 2000,
+        style: { color: '#0aad0a' }
+      })
+    }
+
+  }
 
   function getAllProducts(page = 1) {
     setLoading(true)
@@ -47,11 +62,11 @@ export default function Home() {
         {allProducts?.map((product) => {
           let { _id } = product
           return <>
-            <div key={_id} className='lg:w-2/12 md:w-3/12 sm:w-6/12 w-full px-3 '>
+            <div key={_id} className='lg:w-2/12 md:w-3/12 sm:w-6/12 w-full px-3 group overflow-hidden '>
               <Link to={'/ProductDetails/' + _id}>
 
 
-                <div className="item p-3 group overflow-hidden cursor-pointer ">
+                <div className="item p-3  overflow-hidden cursor-pointer ">
                   <img src={product.imageCover} alt={product.title} className='w-full' />
                   <h5 className='font-bold mt-5 text-lg'>{product.title.split(" ").slice(0, 2).join(" ")}</h5>
                   <p className='mb-2'>{product.category.name}</p>
@@ -61,10 +76,11 @@ export default function Home() {
                       <i className='fa-solid fa-star text-yellow-400'></i>{product.ratingsAverage}
                     </span>
                   </div>
-                  <button className="flex justify-center items-center translate-y-24 group-hover:translate-y-0 hover:bg-green-600 duration-200 bg-active text-white px-6 py-2 rounded-lg w-full mt-4">
-                    Add to Cart <i className="fa-solid fa-cart-shopping ml-2"></i></button>
+
                 </div>
               </Link>
+              <button onClick={() => { addProductToCart(_id) }} className="flex justify-center items-center translate-y-24 group-hover:translate-y-0 hover:bg-green-600 duration-200 bg-active text-white px-6 py-2 rounded-lg w-full mt-4">
+                Add to Cart <i className="fa-solid fa-cart-shopping ml-2"></i></button>
             </div>
           </>
         })}

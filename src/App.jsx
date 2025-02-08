@@ -18,6 +18,12 @@ import Notfound from './components/Notfound/Notfound'
 import { useEffect } from "react";
 import "flowbite";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import CartContextProvider from './Context/CartContext'
+import { Toaster } from 'react-hot-toast'
+
+
+
+
 export default function app() {
 
     let queryclient = new QueryClient()
@@ -42,13 +48,16 @@ export default function app() {
     ])
 
     return (
+        <CartContextProvider>
+            <QueryClientProvider client={queryclient}>
+                <AuthContextProvider>
+                    <RouterProvider router={route}></RouterProvider>
+                    <Toaster></Toaster>
+                </AuthContextProvider>
+            </QueryClientProvider>
+        </CartContextProvider>
+        // <CartContextProvider>
 
-
-        <QueryClientProvider client={queryclient}>
-            <AuthContextProvider>
-                <RouterProvider router={route}></RouterProvider>
-            </AuthContextProvider>
-        </QueryClientProvider>
-
+        // </CartContextProvider>
     )
 }
