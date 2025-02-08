@@ -1,17 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import useApi from '../../Hooks/useApi'
 
 export default function Categories() {
 
-    function getAllcategories() {
-        return axios.get(`https://ecommerce.routemisr.com/api/v1/categories`)
-    }
+   
 
-    let { data, isLoading } = useQuery({
-        queryKey: ['categories'],
-        queryFn: getAllcategories,
-    })
+    let { data, isLoading } = useApi('Categories')
 
 
     if (isLoading) {

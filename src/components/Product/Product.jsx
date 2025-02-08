@@ -4,21 +4,16 @@ import MainSlider from '../MainSlider/MainSlider'
 import CategorySlider from '../CategorySlider/CategorySlider'
 import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
+import useApi from '../../Hooks/useApi'
 
 export default function Home() {
 
 
 
-    function getAllProducts() {
-        return axios.get(`https://ecommerce.routemisr.com/api/v1/products`)
-    }
+  
 
-    let { data, isLoading } = useQuery({
-        queryKey: ['allProducts'],
-        queryFn: getAllProducts,
-    })
+    let { data, isLoading } =useApi("products")
 
-    console.log()
     if (isLoading) {
         return <div className='h-screen w-screen flex justify-center items-center bg-slate-300'>
             <span className="loader"></span>

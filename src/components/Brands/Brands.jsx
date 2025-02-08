@@ -2,16 +2,19 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import useApi from '../../Hooks/useApi'
 
 export default function Brands() {
-  function getallBrands() {
-    return axios.get(`https://ecommerce.routemisr.com/api/v1/brands`)
-  }
+  // function getallBrands() {
+  //   return axios.get(`https://ecommerce.routemisr.com/api/v1/brands`)
+  // }
 
-  let { data, isLoading } = useQuery({
-    queryKey: ['brands'],
-    queryFn: getallBrands
-  })
+  // let { data, isLoading } = useQuery({
+  //   queryKey: ['brands'],
+  //   queryFn: getallBrands
+  // })
+
+ let { data , isLoading}= useApi('brands')
 
   console.log(data)
 
