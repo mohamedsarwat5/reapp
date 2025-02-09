@@ -14,7 +14,7 @@ export default function Brands() {
   //   queryFn: getallBrands
   // })
 
- let { data , isLoading}= useApi('brands')
+  let { data, isLoading } = useApi('brands')
 
   console.log(data)
 
