@@ -26,6 +26,7 @@ export default function Login() {
     validationSchema: validYup,
   });
 
+
   async function LoginApi(data) {
     axios
       .post(`${baseUrl}/api/v1/auth/signin`, data)
@@ -35,22 +36,22 @@ export default function Login() {
 
           setToken(req.data.token)
           localStorage.setItem('token', req.data.token)
-
-
-
           navg("/home");
         }
       })
-      .catch((err) => {
-        setError(err.response.data.message);
+      .catch((error) => {
+        setError(error.response.data.message);
       });
   }
 
   return (
     <div className="w-full h-screen flex justify-center items-center ">
-    <div className="w-full">
+      <div className="w-full">
+
+        {errorMessage && <div class="w-80 mx-auto text-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 " role="alert">
+          <span class="font-medium">{errorMessage}</span>
+        </div>}
         <h2 className="text-center font-bold py-6 text-3xl">Login Now</h2>
-      
         <form onSubmit={LoginForm.handleSubmit} className="max-w-sm mx-auto px-3">
           <div className="mb-5">
             <label
@@ -73,7 +74,7 @@ export default function Login() {
               ""
             )}
           </div>
-      
+
           <div className="mb-5">
             <label
               htmlFor="password"
@@ -103,7 +104,7 @@ export default function Login() {
             Submit
           </button>
         </form>
-    </div>
+      </div>
     </div>
   );
 }
