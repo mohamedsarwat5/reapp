@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 
 export default function Cart() {
 
+    const [isLoading, setisLoading] = useState(true)
 
     let { getCartItems, removeCartItems, updateCartItems } = useContext(CartContext)
 
@@ -15,8 +16,10 @@ export default function Cart() {
     }
 
     async function getItems() {
+        setisLoading(true)
         let response = await getCartItems()
         setcardivetails(response.data)
+        setisLoading(false)
     }
 
     async function removeItems(productId) {
@@ -30,7 +33,11 @@ export default function Cart() {
         getItems()
     }, [])
 
-
+    if (isLoading) {
+        return <div className='flex justify-center items-center bg-slate-300 h-screen'>
+            <span className="loader"></span>
+        </div>
+    }
     return (<>
 
 
@@ -43,7 +50,7 @@ export default function Cart() {
 
 
 
-            <div className='flex flex-wrap'> 
+            <div className='flex flex-wrap'>
                 {cardivetails?.data.products.map(product => <div key={product.product.id} className="  md:w-2/12 w-full px-3 mb-3 ">
 
                     <div className='flex card gap-2 justify-between items-center flex-col  h-full min-h-[300px]'>
