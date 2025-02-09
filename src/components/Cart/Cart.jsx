@@ -50,7 +50,7 @@ export default function Cart() {
                         <img src={product.product.imageCover} className="w-full  object-cover" alt={product.product.title} />
 
                         <h2 className=" font-semibold text-gray-900  w-full text-center gap-2">
-                            {product.product.title}
+                            {product.product.title.split(" ").slice(0, 2).join(" ")}
                         </h2>
                         <div className='flex gap-3'>
 
