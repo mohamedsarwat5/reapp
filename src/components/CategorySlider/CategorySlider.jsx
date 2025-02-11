@@ -57,7 +57,7 @@ export default function CategorySlider() {
 
     return (<>
 
-        <div className='my-5'>
+        <div className='my-5 overflow-hidden'> 
             <Slider {...settings} >
                 {categoryList?.map(el => {
                     return (
