@@ -51,6 +51,8 @@ export default function ForgetPassword() {
                 navg('/UpdatePassword')
             })
             .catch((err) => {
+                setisLoading(false)
+
                 setError(err.response.data.message);
             });
     }
@@ -69,6 +71,8 @@ export default function ForgetPassword() {
                 }
             })
             .catch((err) => {
+                setisLoading(false)
+
                 setError(err.response.data.message);
             });
     }

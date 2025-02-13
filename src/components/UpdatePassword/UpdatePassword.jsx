@@ -37,6 +37,8 @@ export default function UpdatePassword() {
                 }
             })
             .catch((err) => {
+                setisLoading(false)
+
                 setError(err.response.data.message);
             });
     }
@@ -107,7 +109,7 @@ export default function UpdatePassword() {
                     type="submit"
                     className="text-white bg-active hover:bg-green-600 focus:ring-acti-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center "
                 >
-                    Update 
+                    Update
                 </button>
             </form>
         </div>
