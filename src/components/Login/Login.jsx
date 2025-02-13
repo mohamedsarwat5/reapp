@@ -6,16 +6,18 @@ import axios from "axios";
 import { AuthContext } from "../../Context/AuthContextProvider";
 
 export default function Login() {
-  let { setToken } = useContext(AuthContext)
+  let { setToken } = useContext(AuthContext);
 
   let [errorMessage, setError] = useState(null);
 
   const baseUrl = "https://ecommerce.routemisr.com";
   let navg = useNavigate();
+
   let validYup = Yup.object({
-    email: Yup.string().required("email required ").email("enter valid Email"),
-    password: Yup.string().required("password Required"),
+    email: Yup.string().required("Email Required ").email("Enter Valid Email"),
+    password: Yup.string().required("Password Required"),
   });
+
   let LoginForm = useFormik({
     initialValues: {
       email: "",
@@ -25,15 +27,14 @@ export default function Login() {
     validationSchema: validYup,
   });
 
-
   async function LoginApi(data) {
     axios
       .post(`${baseUrl}/api/v1/auth/signin`, data)
       .then((req) => {
         console.log(req.data);
         if (req.data.message == "success") {
-          setToken(req.data.token)
-          localStorage.setItem('token', req.data.token)
+          setToken(req.data.token);
+          localStorage.setItem("token", req.data.token);
           navg("/home");
         }
       })
@@ -42,15 +43,22 @@ export default function Login() {
       });
   }
 
-   return (
+  return (
     <div className="w-full h-screen flex justify-center items-center ">
       <div className="w-full">
-
-        {errorMessage && <div className="w-80 mx-auto text-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 " role="alert">
-          <span className="font-medium">{errorMessage}</span>
-        </div>}
+        {errorMessage && (
+          <div
+            className="w-80 mx-auto text-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 "
+            role="alert"
+          >
+            <span className="font-medium">{errorMessage}</span>
+          </div>
+        )}
         <h2 className="text-center font-bold py-6 text-3xl">Login Now</h2>
-        <form onSubmit={LoginForm.handleSubmit} className="max-w-sm mx-auto px-3">
+        <form
+          onSubmit={LoginForm.handleSubmit}
+          className="max-w-sm mx-auto px-3"
+        >
           <div className="mb-5">
             <label
               htmlFor="email"
@@ -93,9 +101,12 @@ export default function Login() {
             ) : (
               ""
             )}
-            <Link to='/forgetPassword' className="mt-6 block hover:text-active">Forget Password ?</Link>
+            <Link to="/forgetPassword" className="mt-6 block hover:text-active">
+              Forget Password ?
+            </Link>
           </div>
           <button
+            disabled={!(LoginForm.isValid && LoginForm.dirty)}
             type="submit"
             className="text-white bg-active hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >

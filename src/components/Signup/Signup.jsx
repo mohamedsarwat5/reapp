@@ -12,10 +12,10 @@ export default function Signup() {
 
   let validationYup = Yup.object({
     name: Yup.string().required("Please Enter Your name").min(3, 'please enter at least 3 letters').max(20, ' maximam name is 20 letters'),
-    email: Yup.string().required("Please enter Your email").email('Please enter valid email'),
-    password: Yup.string().required('please Enter Your Password').matches(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/, 'password invalid'),
-    rePassword: Yup.string().required('please confirm Your Password').oneOf([Yup.ref('password')], 'password not matched'),
-    phone: Yup.string().required('enter your phone').matches(/^(20)?01[1250][0-9]{8}$/, 'enter valid phone number')
+    email: Yup.string().required("Please Enter Your email").email('Please Enter Valid Email'),
+    password: Yup.string().required('Please Enter Your Password').matches(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/, 'password invalid'),
+    rePassword: Yup.string().required('Please Confirm Your Password').oneOf([Yup.ref('password')], 'password not matched'),
+    phone: Yup.string().required('Enter Your Phone').matches(/^(20)?01[1250][0-9]{8}$/, 'enter valid phone number')
 
   })
 
@@ -53,9 +53,9 @@ export default function Signup() {
 
     <h1 className='text-center font-bold py-6 text-3xl mt-16'> Register Now </h1>
 
-    {errorMessage &&  <div className="w-80 mx-auto text-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 " role="alert">
-          <span className="font-medium">{errorMessage}</span>
-        </div>}
+    {errorMessage && <div className="w-80 mx-auto text-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 " role="alert">
+      <span className="font-medium">{errorMessage}</span>
+    </div>}
     <form onSubmit={registerForm.handleSubmit} className="max-w-sm mx-auto px-3 ">
 
       <div className="mb-5">
