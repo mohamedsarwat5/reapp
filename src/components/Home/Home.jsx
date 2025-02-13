@@ -1,18 +1,33 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import MainSlider from '../MainSlider/MainSlider'
 import CategorySlider from '../CategorySlider/CategorySlider'
 import { Link } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
 import { CartContext } from '../../Context/CartContext'
 import toast from 'react-hot-toast'
+import useApi from '../../Hooks/useApi'
 
 export default function Home() {
   let { addToCart, addToWishList } = useContext(CartContext)
-  let [allProducts, setAllProducts] = useState(null)
-  let [pageNumber, setPageNumber] = useState(null)
-  let [loading, setLoading] = useState(true)
   const [likedProducts, setLikedProducts] = useState({});
+  let [pageNumbers, setPageNumbers] = useState([])
+  const [currentPage, setCurrentPage] = useState(1);
+
+  let { data, isLoading } = useApi(`products?limit=12&page=${currentPage}`);
+
+  function handlePageChange(e) {
+    let page = e.target.getAttribute('page')
+    setCurrentPage(page);;
+  }
+
+
+  useEffect(() => {
+    if (data?.data?.metadata?.numberOfPages) {
+      let nums = Array.from({ length: data.data.metadata.numberOfPages }, (_, i) => i + 1);
+      setPageNumbers(nums);
+    }
+  }, [data]);
 
   const toggleLike = (productId) => {
     setLikedProducts(prev => ({
@@ -20,6 +35,7 @@ export default function Home() {
       [productId]: !prev[productId]
     }));
   };
+
   const addProductToCart = async (productId) => {
     try {
       const response = await addToCart(productId);
@@ -34,6 +50,7 @@ export default function Home() {
       console.error('Error adding to cart:', error);
     }
   };
+
   const addProductToWishList = async (productId) => {
     try {
       const response = await addToWishList(productId);
@@ -49,47 +66,26 @@ export default function Home() {
     }
   };
 
-  function getAllProducts(page = 1) {
-    setLoading(true)
-    axios.get(`https://ecommerce.routemisr.com/api/v1/products?limit=12&page=${page}`)
-      .then(req => {
-        setAllProducts(req.data.data)
-        let nums = []
-        for (let i = 1; i <= req.data.metadata.numberOfPages; i++) {
-          nums.push(i)
-          setPageNumber(nums)
-        }
-
-        setLoading(false)
-      })
-  }
-
-
-
-  useEffect(() => {
-    getAllProducts()
-  }, [])
-
-  function getPageNumber(e) {
-    let page = e.target.getAttribute('page')
-    getAllProducts(page)
+  if (isLoading) {
+    return (
+      <div className='flex justify-center items-center bg-slate-300 h-screen'>
+        <section class="dots-container">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </section>
+      </div>
+    )
   }
 
   return (<>
-
-    {loading ? <div className='flex justify-center items-center bg-slate-300 h-screen'>
-      <section class="dots-container">
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-</section>
-    </div> : <div className="w-11/12 my-5 mx-auto">
+    <div className="w-11/12 my-5 mx-auto">
       <MainSlider></MainSlider>
       <CategorySlider></CategorySlider>
       <div className='flex flex-wrap  '>
-        {allProducts?.map((product) => {
+        {data?.data?.data?.map((product) => {
           let { _id } = product
           return <>
             <div key={_id} className='lg:w-2/12 md:w-3/12 sm:w-6/12 w-full px-3 group overflow-hidden '>
@@ -126,37 +122,41 @@ export default function Home() {
         })}
       </div>
 
-      <nav aria-label="Page navigation example ">
+      <nav aria-label="Page navigation example">
         <ul className="flex items-center justify-center -space-x-px text-sm my-4 cursor-pointer">
           <li>
-            <a href="#" className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+            <button
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            >
+              Previous
+            </button>
           </li>
-          {pageNumber?.map((el) => {
-            return (
-              <li onClick={getPageNumber} key={el}>
-                <a page={el} className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{el}</a>
-              </li>
-            )
-          })}
-
-
-
+          {pageNumbers.map((el) => (
+            <li key={el}>
+              <button
+                page={el}
+                onClick={handlePageChange}
+                className={`flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white ${currentPage === el ? 'bg-gray-300' : ''
+                  }`}
+              >
+                {el}
+              </button>
+            </li>
+          ))}
           <li>
-            <a href="#" className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+            <button
+              disabled={currentPage === pageNumbers.length}
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, pageNumbers.length))}
+              className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            >
+              Next
+            </button>
           </li>
         </ul>
       </nav>
-
-
-    </div>}
-
-
-
-
-
-
-
+    </div>
   </>
-
   )
 }
