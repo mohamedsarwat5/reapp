@@ -44,6 +44,8 @@ export default function Login() {
         }
       })
       .catch((error) => {
+        setisLoading(false)
+
         setError(error.response.data.message);
       });
   }
