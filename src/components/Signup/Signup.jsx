@@ -30,7 +30,7 @@ export default function Signup() {
     axios.post(`${baseUrl}/api/v1/auth/signup`, data)
       .then(request => {
         if (request.data.message == 'success') {
-          navigation('/login')
+          navigation('/')
         }
       }).catch(error => {
         setErrorMessage(error.response.data.message)
