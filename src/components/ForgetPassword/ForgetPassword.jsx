@@ -7,11 +7,13 @@ import axios from "axios";
 export default function ForgetPassword() {
     let [errorMessage, setError] = useState(null);
     let [formDisplay, setformDisplay] = useState(true);
+    const [isLoading, setisLoading] = useState(false)
+
 
     const baseUrl = "https://ecommerce.routemisr.com";
     let navg = useNavigate();
     let validYup = Yup.object({
-        email: Yup.string().required("email required ").email("enter valid Email"),
+        email: Yup.string().required("Email Required ").email("enter valid Email"),
     });
 
 
@@ -38,10 +40,14 @@ export default function ForgetPassword() {
 
 
     function verifyResetCodeApi(data) {
+        setisLoading(true)
+
         axios
             .post(`${baseUrl}/api/v1/auth/verifyResetCode`, data)
             .then((req) => {
                 console.log(req.data);
+                setisLoading(false)
+
                 navg('/UpdatePassword')
             })
             .catch((err) => {
@@ -51,11 +57,14 @@ export default function ForgetPassword() {
 
 
     function ForgetPasswordApi(data) {
+        setisLoading(true)
         axios
             .post(`${baseUrl}/api/v1/auth/forgotPasswords`, data)
             .then((req) => {
                 console.log(req.data);
+
                 if (req.data.statusMsg == "success") {
+                    setisLoading(false)
                     setformDisplay(false)
                 }
             })
@@ -64,11 +73,25 @@ export default function ForgetPassword() {
             });
     }
 
+    if (isLoading) {
+        return <div className='flex justify-center items-center bg-slate-300 h-screen'>
+            <section className="dots-container">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+            </section>
+        </div>
+    }
+
+
+
     return (<>
-        <div className="h-screen flex justify-center items-center w-full">
+        <div className="h-screen flex justify-center items-center w-full flex-col ">
 
             {formDisplay ? <div className="w-full">
-                <h2 className="text-center font-bold py-6 text-3xl">Verify your email</h2>
+                <h2 className="text-center font-bold py-6 text-3xl capitalize">Verify your email</h2>
 
                 <form onSubmit={forgetForm.handleSubmit} className="max-w-sm mx-auto px-3">
                     <div className="mb-5">
@@ -84,7 +107,7 @@ export default function ForgetPassword() {
                             onBlur={forgetForm.handleBlur}
                             type="email"
                             id="email"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-active focus:border-active block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-active focus:border-active block w-full p-2.5 "
                         />
                         {forgetForm.touched.email && forgetForm.errors.email ? (
                             <p className="text-red-600">{forgetForm.errors.email}</p>
@@ -94,14 +117,14 @@ export default function ForgetPassword() {
                     </div>
                     <button
                         type="submit"
-                        className="text-white bg-active hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        className="text-white bg-active hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center "
                     >
                         Send
                     </button>
                 </form>
             </div>
-                : <div className="w-full">
-                    <h2 className="text-center font-bold  text-3xl">Enter reset code</h2>
+                : <div className="w-full ">
+                    <h2 className="text-center font-bold capitalize text-3xl">Enter verification code</h2>
 
                     <form onSubmit={verifyResetCodeForm.handleSubmit} className="max-w-sm mx-auto px-3 mt-8">
                         <div className="mb-5">
@@ -117,7 +140,7 @@ export default function ForgetPassword() {
                                 onBlur={verifyResetCodeForm.handleBlur}
                                 type="string"
                                 id="resetCode"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-active focus:border-active block w-full p-2.5  dark:focus:ring-active dark:focus:border-active"
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-active focus:border-active block w-full p-2.5  "
                             />
                             {verifyResetCodeForm.touched.resetCode && verifyResetCodeForm.errors.resetCode ? (
                                 <p className="text-red-600">{verifyResetCodeForm.errors.resetCode}</p>
@@ -127,9 +150,9 @@ export default function ForgetPassword() {
                         </div>
                         <button
                             type="submit"
-                            className="text-white bg-active hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            className="text-white bg-active hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center "
                         >
-                            Verify Code
+                            Send Code
                         </button>
                     </form>
                 </div>}
