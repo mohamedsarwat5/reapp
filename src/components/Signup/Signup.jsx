@@ -53,10 +53,9 @@ export default function Signup() {
 
     <h1 className='text-center font-bold py-6 text-3xl mt-16'> Register Now </h1>
 
-    {errorMessage ? <div class="w-1/3 text-center mx-auto p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-      <span class="font-medium">{errorMessage}</span>
-    </div> : ""}
-
+    {errorMessage &&  <div className="w-80 mx-auto text-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 " role="alert">
+          <span className="font-medium">{errorMessage}</span>
+        </div>}
     <form onSubmit={registerForm.handleSubmit} className="max-w-sm mx-auto px-3 ">
 
       <div className="mb-5">
