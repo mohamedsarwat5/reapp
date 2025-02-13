@@ -5,14 +5,20 @@ import useApi from '../../Hooks/useApi'
 
 export default function Categories() {
 
-   
+
 
     let { data, isLoading } = useApi('Categories')
 
 
     if (isLoading) {
         return <div className='flex justify-center items-center bg-slate-300 h-screen'>
-            <span className="loader"></span>
+            <section class="dots-container">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </section>
         </div>
     }
 

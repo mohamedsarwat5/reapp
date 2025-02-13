@@ -14,12 +14,27 @@ export default function CartContextProvider(props) {
             .then(request => request)
             .catch(error => error)
     }
+    function displayWishList() {
+        let headers = { token: localStorage.getItem('token') }
+
+        return axios.get(`https://ecommerce.routemisr.com/api/v1/wishlist`, { headers })
+            .then(request => request)
+            .catch(error => error)
+    }
 
 
     function addToCart(productId) {
         let headers = { token: localStorage.getItem('token') }
 
         return axios.post(`https://ecommerce.routemisr.com/api/v1/cart`, { productId }, { headers })
+            .then(request => request)
+            .catch(error => error)
+    }
+
+
+    function addToWishList(productId) {
+        let headers = { token: localStorage.getItem('token') }
+        return axios.post(`https://ecommerce.routemisr.com/api/v1/wishlist`, { productId }, { headers })
             .then(request => request)
             .catch(error => error)
     }
@@ -32,7 +47,16 @@ export default function CartContextProvider(props) {
             .catch(error => error)
     }
 
+    function removeWishListtItems() {
+        let headers = { token: localStorage.getItem('token') }
+
+        return axios.delete(`https://ecommerce.routemisr.com/api/v1/wishlist/`, { headers })
+            .then(response => response)
+            .catch(error => error)
+    }
+
     function updateCartItems(productId, count) {
+        let headers = { token: localStorage.getItem('token') }
         return axios.put(`https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
             { count: count },
             { headers }
@@ -42,7 +66,7 @@ export default function CartContextProvider(props) {
     }
 
 
-    return <CartContext.Provider value={{ addToCart, getCartItems, removeCartItems, updateCartItems }}>
+    return <CartContext.Provider value={{ addToCart, getCartItems, removeCartItems, updateCartItems, addToWishList, displayWishList, removeWishListtItems }}>
         {props.children}
     </CartContext.Provider>
 }

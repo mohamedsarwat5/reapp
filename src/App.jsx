@@ -20,7 +20,8 @@ import "flowbite";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import CartContextProvider from './Context/CartContext'
 import { Toaster } from 'react-hot-toast'
-
+import { HeroUIProvider } from "@heroui/react";
+import WishList from './components/WishList/WishList'
 
 
 
@@ -38,6 +39,7 @@ export default function app() {
                 { path: 'product', element: <ProtectedRouting><Product></Product></ProtectedRouting> },
                 { path: 'categories', element: <ProtectedRouting><Categories></Categories></ProtectedRouting> },
                 { path: 'brands', element: <ProtectedRouting><Brands></Brands></ProtectedRouting> },
+                { path: 'wishlist', element: <ProtectedRouting><WishList></WishList></ProtectedRouting> },
                 { path: 'ProductDetails/:id', element: <ProtectedRouting><ProductDetails></ProductDetails></ProtectedRouting> },
                 { path: 'signup', element: <Signup></Signup> },
                 { path: 'forgetPassword', element: <ForgetPassword></ForgetPassword> },
@@ -48,16 +50,18 @@ export default function app() {
     ])
 
     return (
-        <CartContextProvider>
-            <QueryClientProvider client={queryclient}>
-                <AuthContextProvider>
-                    <RouterProvider router={route}></RouterProvider>
-                    <Toaster></Toaster>
-                </AuthContextProvider>
-            </QueryClientProvider>
-        </CartContextProvider>
-        // <CartContextProvider>
+        <HeroUIProvider>
 
-        // </CartContextProvider>
+            <CartContextProvider>
+                <QueryClientProvider client={queryclient}>
+                    <AuthContextProvider>
+                        <RouterProvider router={route}></RouterProvider>
+                        <Toaster></Toaster>
+                    </AuthContextProvider>
+                </QueryClientProvider>
+            </CartContextProvider>
+        </HeroUIProvider>
+
+
     )
 }

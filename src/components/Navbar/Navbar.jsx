@@ -7,7 +7,7 @@ export default function Navbar() {
     let navg = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const socialIcons = ["instagram", "facebook", "twitter", "tiktok", "linkedin", "youtube"]
-    const menuList = ["home", "cart", "product", "categories", "brands"]
+    const menuList = ["home", "cart", "product", "categories", "brands" ,"wishlist"]
     function logout() {
         localStorage.removeItem('token');
         setToken(null);

@@ -48,7 +48,13 @@ export default function ProductDetails() {
 
 
         {loading ? <div className='flex justify-center items-center bg-slate-300 h-screen '>
-            <span className="loader"></span>
+            <section class="dots-container">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </section>
         </div> : <div className='w-10/12 mx-auto mt-24'>
             <div className='flex gap-4 flex-wrap items-center'>
                 <div className='md:w-3/12 md:mx-auto w-full mb-7'>
