@@ -89,7 +89,7 @@ export default function Cart() {
                                         </button>
                                     </div>
                                     <div className="py-4 font-semibold text-gray-900 w-full">
-                                        {product.price} EGP
+                                        {product.price * product.count} EGP
                                     </div>
                                 </div>
                                 <div className="mb-5">
