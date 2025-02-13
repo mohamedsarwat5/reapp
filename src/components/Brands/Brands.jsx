@@ -20,12 +20,12 @@ export default function Brands() {
 
   if (isLoading) {
     return <div className='flex justify-center items-center bg-slate-300 h-screen'>
-      <section class="dots-container">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+      <section className="dots-container">
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
       </section>
     </div>
   }
@@ -37,9 +37,9 @@ export default function Brands() {
         {data?.data.data.map((brand) => {
           let { name, image, _id } = brand
           return <>
-            <div key={_id} className='lg:w-2/12 md:w-3/12 sm:w-6/12 w-full px-3 py-11'>
-              <div className="item p-3 group overflow-hidden  ">
-                <img src={image} alt={name} className='w-full' />
+            <div key={_id} className='lg:w-2/12 md:w-3/12 sm:w-6/12 w-full px-3 py-11 mt-4'>
+              <div className="item p-3 group overflow-hidden rounded-full shadow-xl ">
+                <img src={image} alt={name} className='w-full ' />
                 <h5 className='font-bold mt-5 text-lg text-center'>{name}</h5>
               </div>
             </div>

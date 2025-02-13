@@ -41,12 +41,12 @@ export default function Cart() {
 
     if (isLoading) {
         return <div className='flex justify-center items-center bg-slate-300 h-screen'>
-            <section class="dots-container">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
+            <section className="dots-container">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
             </section>
         </div>
     }
@@ -70,7 +70,7 @@ export default function Cart() {
                     {cartdetails?.data.products.map(product => (
                         <div key={product.product.id} className="md:w-3/12 w-full px-3 mb-3">
                             <div className='flex card gap-2 justify-between items-center flex-col h-full min-h-[300px]'>
-                                <img src={product.product.imageCover} className="w-full object-cover" alt={product.product.title} />
+                                <img src={product.product.imageCover} className="w-full " alt={product.product.title} />
                                 <h2 className="font-semibold text-gray-900 w-full text-center gap-2">
                                     {product.product.title.split(" ").slice(0, 2).join(" ")}
                                 </h2>

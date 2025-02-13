@@ -69,12 +69,12 @@ export default function Home() {
   if (isLoading) {
     return (
       <div className='flex justify-center items-center bg-slate-300 h-screen'>
-        <section class="dots-container">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
+        <section className="dots-container">
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
         </section>
       </div>
     )
@@ -133,8 +133,8 @@ export default function Home() {
               Previous
             </button>
           </li>
-          {pageNumbers.map((el) => (
-            <li key={el}>
+          {pageNumbers.map((el ,i) => (
+            <li key={i}>
               <button
                 page={el}
                 onClick={handlePageChange}
