@@ -7,7 +7,7 @@ export default function Navbar() {
     let navg = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const socialIcons = ["instagram", "facebook", "twitter", "tiktok", "linkedin", "youtube"]
-    const menuList = ["home", "cart", "product", "categories", "brands" ,"wishlist"]
+    const menuList = ["home", "cart", "product", "categories", "brands", "wishlist"]
     function logout() {
         localStorage.removeItem('token');
         setToken(null);
@@ -20,8 +20,8 @@ export default function Navbar() {
         <>
             <nav className="bg-white shadow-md  border-gray-200  fixed left-0 end-0 top-0 z-10 max-w-screen w-full flex  items-center justify-between md:px-16 p-4">
 
-                <Link to="/home" className="me-10  ">
-                    <img src={logo} className="h-8" alt="freshCart" />
+                <Link to="/home" className="me-5  ">
+                    <img src={logo} className="h-8 " alt="freshCart" />
                 </Link>
 
                 {/* menu links */}
@@ -37,8 +37,11 @@ export default function Navbar() {
                                     {list}
                                 </NavLink>
                             </li>
+
+
                         ))}
-                            {/* *********************** SOCIAL ICONS *****************/}
+
+                        {/* *********************** SOCIAL ICONS *****************/}
                         <div className="md:ms-96" >
 
                             <ul className='flex items-center gap-3 flex-col md:flex-row '>

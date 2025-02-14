@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { CartContext } from '../../Context/CartContext'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'
-
+import img from "../../assets/images/freshcart-logo.png"
 export default function WishList() {
 
     const [isLoading, setisLoading] = useState(true)
@@ -47,15 +47,16 @@ export default function WishList() {
     }, [])
 
     if (isLoading) {
-        return <div className='flex justify-center items-center bg-slate-300 h-screen'>
-            <section className="dots-container">
-                <div className="dot"></div>
-                <div className="dot"></div>
-                <div className="dot"></div>
-                <div className="dot"></div>
-                <div className="dot"></div>
-            </section>
-        </div>
+        return <div className='flex justify-center items-center bg-slate-300 h-screen flex-col'>
+      <img src={img} className='md:w-[300px] w-[250px] mx-auto' alt="" />
+      <section className="dots-container gap-4 mt-3">
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
+      </section>
+    </div>
     }
 
     return (<>

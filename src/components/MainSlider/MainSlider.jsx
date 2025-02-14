@@ -64,7 +64,7 @@ export default function MainSlider() {
     return (
 
 
-        <div className="md:flex  w-full gap-0 mt-24 ">
+        <div className="md:flex  w-full gap-0 mt-24 rounded-xl ">
 
             <div className="w-full md:w-9/12 mx-auto ">
                 <Slider  {...settings} >

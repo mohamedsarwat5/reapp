@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react'
 import { CartContext } from '../../Context/CartContext'
 import { useEffect } from 'react'
 import useApi from '../../Hooks/useApi'
-import img from "../../assets/images/empty.jpg"
+import img1 from "../../assets/images/empty.jpg"
+import img from "../../assets/images/freshcart-logo.png"
 export default function Cart() {
 
     const [isLoading, setisLoading] = useState(true)
@@ -40,15 +41,16 @@ export default function Cart() {
     }, [])
 
     if (isLoading) {
-        return <div className='flex justify-center items-center bg-slate-300 h-screen'>
-            <section className="dots-container">
-                <div className="dot"></div>
-                <div className="dot"></div>
-                <div className="dot"></div>
-                <div className="dot"></div>
-                <div className="dot"></div>
-            </section>
-        </div>
+        return <div className='flex justify-center items-center bg-slate-300 h-screen flex-col'>
+        <img src={img} className='md:w-[300px] w-[250px] mx-auto' alt="" />
+        <section className="dots-container gap-4 mt-3">
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+        </section>
+      </div>
     }
     return (<>
 
@@ -63,7 +65,7 @@ export default function Cart() {
 
             {cartdetails === null || cartdetails?.data?.products.length === 0 ? (
                 <div className=" mx-auto">
-                    <img src={img} alt="" />
+                    <img src={img1} alt="" />
                 </div>
             ) : (
                 <div className="flex flex-wrap">
