@@ -15,6 +15,9 @@ import img9 from '../../assets/images/slider-2.jpeg'
 
 
 export default function MainSlider() {
+
+    const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
+
     var settings = {
         dots: false,
         infinite: true,
@@ -67,35 +70,12 @@ export default function MainSlider() {
         <div className="md:flex  w-full gap-0 mt-24 rounded-xl ">
 
             <div className="w-full md:w-9/12 mx-auto ">
-                <Slider  {...settings} >
-                    <div>
-                        <img src={img1} className="w-full h-96  object-cover object-center" alt="" />
-                    </div>
-                    <div>
-                        <img src={img2} className="w-full h-96  object-cover" alt="" />
-                    </div>
-                    <div>
-                        <img src={img3} className="w-full h-96  object-cover  " alt="" />
-                    </div>
-                    <div>
-                        <img src={img4} className="w-full h-96  object-cover" alt="" />
-                    </div>
-                    <div>
-                        <img src={img5} className="w-full h-96  object-cover" alt="" />
-                    </div>
-                    <div>
-                        <img src={img6} className="w-full h-96  object-cover" alt="" />
-                    </div>
-                    <div>
-                        <img src={img7} className="w-full h-96  object-cover" alt="" />
-                    </div>
-                    <div>
-                        <img src={img8} className="w-full h-96  object-cover" alt="" />
-                    </div>
-                    <div>
-                        <img src={img9} className="w-full h-96  object-cover" alt="" />
-                    </div>
-
+                <Slider   {...settings} >
+                    {images.map((image, index) => (
+                        <div key={index}>
+                            <img src={image} className="w-full h-96 object-cover object-right" />
+                        </div>
+                    ))}
                 </Slider>
             </div>
 
