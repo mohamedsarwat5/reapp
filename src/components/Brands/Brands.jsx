@@ -39,7 +39,7 @@ export default function Brands() {
           let { name, image, _id } = brand
           return <>
             <div key={_id} className='lg:w-2/12 md:w-3/12 sm:w-6/12 w-full px-3 py-11 mt-4'>
-              <div className="item p-3 group overflow-hidden rounded-full mx-auto w-48 h mx-auto-w-48 shadow-xl ">
+              <div className="item p-5 group overflow-hidden rounded-full mx-auto w-48 h mx-auto-w-48 shadow-xl bg-white">
                 <img src={image} alt={name} className='w-full ' />
                 <h5 className='font-bold mt-5 text-lg text-center'>{name}</h5>
               </div>

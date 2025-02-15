@@ -4,6 +4,8 @@ import { useEffect } from 'react'
 import useApi from '../../Hooks/useApi'
 import img1 from "../../assets/images/empty.jpg"
 import img from "../../assets/images/freshcart-logo.png"
+import { Link } from 'react-router-dom'
+
 export default function Cart() {
 
     const [isLoading, setisLoading] = useState(true)
@@ -42,15 +44,15 @@ export default function Cart() {
 
     if (isLoading) {
         return <div className='flex justify-center items-center bg-slate-300 h-screen flex-col'>
-        <img src={img} className='md:w-[300px] w-[250px] mx-auto' alt="" />
-        <section className="dots-container gap-4 mt-3">
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
-        </section>
-      </div>
+            <img src={img} className='md:w-[300px] w-[250px] mx-auto' alt="" />
+            <section className="dots-container gap-4 mt-3">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+            </section>
+        </div>
     }
     return (<>
 
@@ -58,17 +60,20 @@ export default function Cart() {
 
 
 
-        <div className=" w-11/12 mx-auto mt-28 flex ">
+        <div className=" w-11/12 mx-auto  flex ">
 
 
 
 
             {cartdetails === null || cartdetails?.data?.products.length === 0 ? (
-                <div className=" mx-auto">
-                    <img src={img1} alt="" />
+                <div className=" w-full h-screen flex justify-center items-center flex-col gap-2">
+                    <i class="fa-solid fa-basket-shopping text-active text-9xl mb-2"></i>
+                    <h1 className='text-3xl font-bold'>Your Cart is Empty</h1>
+                    <p className=''>Sorry, you have no product in your cart</p>
+                    <Link className='mt-3 bg-active px-6 py-2 text-white border-2 rounded-lg duration-150 border-active hover:bg-transparent hover:text-active'  to={'/home'} >Start adding</Link>
                 </div>
             ) : (
-                <div className="flex flex-wrap">
+                <div className="flex flex-wrap mt-24">
                     {cartdetails?.data.products.map(product => (
                         <div key={product.product.id} className="md:w-3/12 w-full px-3 mb-3">
                             <div className='flex card gap-2 justify-between items-center flex-col h-full min-h-[300px]'>
