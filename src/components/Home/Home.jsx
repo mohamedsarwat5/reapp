@@ -95,7 +95,7 @@ export default function Home() {
                       addProductToWishList(product._id);
                       toggleLike(product._id);
                     }}
-                    className={`fa-${likedProducts[product._id] ? 'solid' : 'regular'} fa-heart text-2xl text-active`}
+                    className={`fa-${likedProducts[product._id] ? 'solid text-red-600' : 'regular'} fa-heart text-2xl text-active`}
                   ></i>
                 </div>
                 <Link to={`/ProductDetails/${product._id}`}>
@@ -132,7 +132,7 @@ export default function Home() {
               Previous
             </button>
           </li>
-          {pageNumbers.map((el ,i) => (
+          {pageNumbers.map((el, i) => (
             <li key={i}>
               <button
                 page={el}
