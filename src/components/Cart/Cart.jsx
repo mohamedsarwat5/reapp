@@ -70,7 +70,7 @@ export default function Cart() {
                     <i class="fa-solid fa-basket-shopping text-active text-9xl mb-2"></i>
                     <h1 className='text-3xl font-bold'>Your Cart is Empty</h1>
                     <p className=''>Sorry, you have no product in your cart</p>
-                    <Link className='mt-3 bg-active px-6 py-2 text-white border-2 rounded-lg duration-150 border-active hover:bg-transparent hover:text-active'  to={'/home'} >Start adding</Link>
+                    <Link className='mt-3 bg-active px-6 py-2 text-white border-2 rounded-lg duration-150 border-active hover:bg-transparent hover:text-active'  to={'/'} >Start adding</Link>
                 </div>
             ) : (
                 <div className="flex flex-wrap mt-24">

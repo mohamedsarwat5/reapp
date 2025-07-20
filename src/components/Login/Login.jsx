@@ -40,7 +40,7 @@ export default function Login() {
           localStorage.setItem("token", req.data.token);
           setisLoading(false)
 
-          navg("/home");
+          navg("/");
         }
       })
       .catch((error) => {
