@@ -9,117 +9,124 @@
 @source "../node_modules/flowbite";
 
 :root {
-    --main-color: #0aad0a;
-    --light-color: #f0f3f2;
-    --shadow: rgba(145, 158, 171, .2) 0px 2px 4px -1px, rgba(145, 158, 171, .14) 0px 4px 5px 0px, rgba(145, 158, 171, .12) 0px 1px 10px 0px;
-    --font-family: 'Encode Sans Expanded', sans-serif;
-    --rating-color: #ffc908;
+  --main-color: #0aad0a;
+  --light-color: #f0f3f2;
+  --shadow: rgba(145, 158, 171, .2) 0px 2px 4px -1px, rgba(145, 158, 171, .14) 0px 4px 5px 0px, rgba(145, 158, 171, .12) 0px 1px 10px 0px;
+  --font-family: 'Encode Sans Expanded', sans-serif;
+  --rating-color: #ffc908;
 }
 
 body {
-    font-family: var(--font-family) !important;
-    background-image: url(../src/assets/images/light-patten.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center ;
+  font-family: var(--font-family) !important;
+  background-image: url(../src/assets/images/light-patten.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  @apply transition-all duration-300
 }
 
+.link {
+  @apply hover:cursor-pointer capitalize hover:text-active duration-150 block py-2 px-3 rounded md:bg-transparent md:p-0
+}
+
+
 .active {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 
 .loader {
-    width: 48px;
-    height: 48px;
-    border: 10px solid #FFF;
-    border-radius: 50%;
-    position: relative;
-    transform: rotate(45deg);
-    box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  border: 10px solid #FFF;
+  border-radius: 50%;
+  position: relative;
+  transform: rotate(45deg);
+  box-sizing: border-box;
 }
 
+
 .loader::before {
-    content: "";
-    position: absolute;
-    box-sizing: border-box;
-    inset: -10px;
-    border-radius: 50%;
-    border: 10px solid var(--main-color);
-    animation: prixClipFix 2s infinite linear;
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  inset: -10px;
+  border-radius: 50%;
+  border: 10px solid var(--main-color);
+  animation: prixClipFix 2s infinite linear;
 }
 
 @keyframes prixClipFix {
-    0% {
-        clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
-    }
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+  }
 
-    25% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
-    }
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+  }
 
-    50% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
-    }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+  }
 
-    75% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
-    }
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
+  }
 
-    100% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
-    }
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
+  }
 }
 
-/* From Uiverse.io by adamgiebl */ 
+/* From Uiverse.io by adamgiebl */
 .dots-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* height: 100%;
     width: 100%; */
+}
+
+.dot {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  border-radius: 10px;
+  background-color: #b3d4fc;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.dot:last-child {
+  margin-right: 0;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.3s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.1s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    background-color: var(--main-color);
+    box-shadow: 0 0 0 0 rgba(178, 252, 184, 0.7);
   }
-  
-  .dot {
-    height: 20px;
-    width: 20px;
-    margin-right: 10px;
-    border-radius: 10px;
-    background-color: #b3d4fc;
-    animation: pulse 1.5s infinite ease-in-out;
+
+  50% {
+    transform: scale(1.2);
+    background-color: r(--main-color);
+    box-shadow: 0 0 0 10px rgba(180, 252, 178, 0);
   }
-  
-  .dot:last-child {
-    margin-right: 0;
+
+  100% {
+    transform: scale(0.8);
+    background-color: r(--main-color);
+    box-shadow: 0 0 0 0 rgba(178, 252, 187, 0.7);
   }
-  
-  .dot:nth-child(1) {
-    animation-delay: -0.3s;
-  }
-  
-  .dot:nth-child(2) {
-    animation-delay: -0.1s;
-  }
-  
-  .dot:nth-child(3) {
-    animation-delay: 0.1s;
-  }
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(0.8);
-      background-color: var(--main-color);
-      box-shadow: 0 0 0 0 rgba(178, 252, 184, 0.7);
-    }
-  
-    50% {
-      transform: scale(1.2);
-      background-color:r(--main-color);
-      box-shadow: 0 0 0 10px rgba(180, 252, 178, 0);
-    }
-  
-    100% {
-      transform: scale(0.8);
-      background-color:r(--main-color);
-      box-shadow: 0 0 0 0 rgba(178, 252, 187, 0.7);
-    }
-  }
+}

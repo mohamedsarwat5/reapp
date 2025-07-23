@@ -15,8 +15,8 @@ export default function Login() {
   let navg = useNavigate();
 
   let validYup = Yup.object({
-    email: Yup.string().required("Email Required ").email("Enter Valid Email"),
-    password: Yup.string().required("Password Required"),
+    email: Yup.string().required("Please Enter Your E-mail ").email("Enter Valid E-mail"),
+    password: Yup.string().required("Please Enter Your Password"),
   });
 
   let LoginForm = useFormik({
@@ -37,6 +37,7 @@ export default function Login() {
         console.log(req.data);
         if (req.data.message == "success") {
           setToken(req.data.token);
+
           localStorage.setItem("token", req.data.token);
           setisLoading(false)
 
@@ -84,7 +85,7 @@ export default function Login() {
               htmlFor="email"
               className="block mb-2 text-sm font-medium text-gray-900 "
             >
-              Your email
+              E-mail
             </label>
             <input
               value={LoginForm.values.email}
@@ -106,7 +107,7 @@ export default function Login() {
               htmlFor="password"
               className="block mb-2 text-sm font-medium text-gray-900 "
             >
-              Your password
+              Password
             </label>
             <input
               value={LoginForm.values.password}

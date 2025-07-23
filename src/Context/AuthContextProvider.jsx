@@ -8,9 +8,9 @@ export default function AuthContextProvider({ children }) {
 
     useEffect(() => {
 
-        let TokenStorage = localStorage.getItem("token")
-        if (TokenStorage) {
-            setToken(TokenStorage)
+        let TokenLocalStorage = localStorage.getItem("token")
+        if (TokenLocalStorage) {
+            setToken(TokenLocalStorage)
         }
     }, [])
 
@@ -21,4 +21,3 @@ export default function AuthContextProvider({ children }) {
         </AuthContext.Provider>
     )
 }
-

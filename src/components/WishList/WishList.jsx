@@ -62,7 +62,7 @@ export default function WishList() {
     return (<>
 
 
-        <div className='w-11/12 mx-auto mt-28 flex flex-col md:flex-row flex-wrap'>
+        <div className='w-11/12 mx-auto mt-28 flex flex-col md:flex-row flex-wrap min-h-[100dvh]'>
             {wishList?.data?.data?.map(product => {
                 let { _id } = product
                 return <>

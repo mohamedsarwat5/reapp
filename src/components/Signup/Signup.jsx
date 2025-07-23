@@ -13,7 +13,7 @@ export default function Signup() {
   let validationYup = Yup.object({
     name: Yup.string().required("Please Enter Your name").min(3, 'please enter at least 3 letters').max(20, ' maximam name is 20 letters'),
     email: Yup.string().required("Please Enter Your email").email('Please Enter Valid Email'),
-    password: Yup.string().required('Please Enter Your Password').matches(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/, 'password invalid'),
+    password: Yup.string().required('Please Enter Your Password').matches(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/, 'Password must have 2 uppercase, 2 lowercase, 2 symbols, and 8-20 characters'),
     rePassword: Yup.string().required('Please Confirm Your Password').oneOf([Yup.ref('password')], 'password not matched'),
     phone: Yup.string().required('Enter Your Phone').matches(/^(20)?01[1250][0-9]{8}$/, 'enter valid phone number')
 
@@ -59,19 +59,19 @@ export default function Signup() {
     <form onSubmit={registerForm.handleSubmit} className="max-w-sm mx-auto px-3 ">
 
       <div className="mb-5">
-        <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
+        <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white capitalize">full name</label>
         <input value={registerForm.values.name} onChange={registerForm.handleChange} onBlur={registerForm.handlebluonBlur} name='name' type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-active focus:border-active block w-full p-2.5 " />
         {registerForm.touched.name && registerForm.errors.name ? <p className='text-red-700'>{registerForm.errors.name}</p> : ''}
       </div>
 
       <div className="mb-5">
-        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">E-mail</label>
         <input value={registerForm.values.email} onChange={registerForm.handleChange} onBlur={registerForm.handleBlur} name='email' type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-active focus:border-active block w-full p-2.5 " />
         {registerForm.touched.email && registerForm.errors.email ? <p className='text-red-700'>{registerForm.errors.email}</p> : ''}
       </div>
 
       <div className="mb-5">
-        <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+        <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
         <input value={registerForm.values.password} onChange={registerForm.handleChange} onBlur={registerForm.handleBlur} name='password' type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-active focus:border-active block w-full p-2.5 " />
         {registerForm.touched.password && registerForm.errors.password ? <p className='text-red-700'>{registerForm.errors.password}</p> : ''}
       </div>
@@ -83,7 +83,7 @@ export default function Signup() {
       </div>
 
       <div className="mb-5">
-        <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Phone</label>
+        <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone</label>
         <input value={registerForm.values.phone} onChange={registerForm.handleChange} onBlur={registerForm.handleBlur} name='phone' type="tel" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-active focus:border-active block w-full p-2.5 " />
         {registerForm.touched.phone && registerForm.errors.phone ? <p className='text-red-700'>{registerForm.errors.phone}</p> : ''}
       </div>
