@@ -8,11 +8,13 @@ import { CartContext } from '../../Context/CartContext'
 import toast from 'react-hot-toast'
 import useApi from '../../Hooks/useApi'
 import img from "../../assets/images/freshcart-logo.png"
+import { AuthContext } from '../../Context/AuthContextProvider'
 export default function Home() {
   let { addToCart, addToWishList } = useContext(CartContext)
   const [likedProducts, setLikedProducts] = useState({});
   let [pageNumbers, setPageNumbers] = useState([])
   const [currentPage, setCurrentPage] = useState(1);
+  const { token } = useContext(AuthContext)
 
   let { data, isLoading } = useApi(`products?limit=12&page=${currentPage}`);
 
@@ -38,6 +40,9 @@ export default function Home() {
 
   const addProductToCart = async (productId) => {
     try {
+      if (!token) {
+        return toast.error("You should login first");
+      }
       const response = await addToCart(productId);
       if (response.data.status === "success") {
         toast.success("Product added to your cart", {
@@ -53,6 +58,9 @@ export default function Home() {
 
   const addProductToWishList = async (productId) => {
     try {
+       if (!token) {
+                return toast.error("You should login first");
+            }
       const response = await addToWishList(productId);
       if (response.data.status === 'success') {
         toast.success("Product added to your Wishlist", {

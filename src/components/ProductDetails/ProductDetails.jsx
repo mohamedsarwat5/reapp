@@ -4,16 +4,21 @@ import { useParams } from 'react-router-dom'
 import Slider from 'react-slick'
 import { CartContext } from '../../Context/CartContext'
 import toast from 'react-hot-toast'
+import { AuthContext } from '../../Context/AuthContextProvider'
 
 export default function ProductDetails() {
 
     let { addToCart } = useContext(CartContext)
+    const { token } = useContext(AuthContext)
 
     let [product, setProduct] = useState(null)
     let { id } = useParams()
     let [loading, setLoading] = useState(true)
 
     async function addProductToCart(productId) {
+        if (!token) {
+            return toast.error("You should login first");
+        }
         let response = await addToCart(productId)
         if (response.data.status === "success") {
             console.log("added")
