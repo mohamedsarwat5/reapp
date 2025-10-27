@@ -44,13 +44,13 @@ export default function AllOrders() {
                     <table className="w-full text-sm text-left rtl:text-right text-gray-800 ">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
                             <tr>
-                                <th scope="col" className="px-6 py-3">
+                                <th scope="col" className="px-6 py-3 whitespace-nowrap">
                                     ORDER ID
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     status
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th scope="col" className="px-6 py-3 whitespace-nowrap">
                                     Payment Method
                                 </th>
                                 <th scope="col" className="px-6 py-3">
