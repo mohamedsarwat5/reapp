@@ -9,9 +9,9 @@ export default function Home() {
     const { addToCart, addToWishList } = useContext(CartContext);
     const { data, isLoading } = useApi("products");
     const { token } = useContext(AuthContext)
-console.log("Token is: ", token);
+    console.log("Token is: ", token);
     const [likedProducts, setLikedProducts] = useState({});
-
+    const [loading, setLoading] = useState(null)
     const toggleLike = (productId) => {
         setLikedProducts(prev => ({
             ...prev,
@@ -22,7 +22,7 @@ console.log("Token is: ", token);
     const addProductToWishList = async (productId) => {
         try {
 
- if (!token) {
+            if (!token) {
                 return toast.error("You should login first");
             }
             const response = await addToWishList(productId);
@@ -42,9 +42,10 @@ console.log("Token is: ", token);
 
     const addProductToCart = async (productId) => {
         try {
-             if (!token) {
+            if (!token) {
                 return toast.error("You should login first");
             }
+            setLoading(productId)
             const response = await addToCart(productId);
             if (response.data.status === "success") {
                 toast.success("Product added to your cart", {
@@ -52,9 +53,12 @@ console.log("Token is: ", token);
                     duration: 2000,
                     style: { color: '#0aad0a' }
                 });
+
             }
         } catch (error) {
             console.error('Error adding to cart:', error);
+        } finally {
+            setLoading(null)
         }
     };
 
@@ -73,19 +77,11 @@ console.log("Token is: ", token);
 
     return (
         <div className="w-11/12 my-5 mx-auto">
-            <div className='flex flex-wrap py-20'>
+            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 space-y-3 py-20'>
                 {data?.data?.data?.map((product) => (
-                    <div key={product._id} className='lg:w-2/12 md:w-4/12 sm:w-6/12 w-full px-3 overflow-hidden group mt-2'>
+                    <div key={product._id} className='w-full px-3 overflow-hidden group mt-2'>
                         <div className='relative'>
-                            <div className='absolute top-0 left-0 p-5 w-7 h-7 flex justify-center items-center bg-white shadow-lg rounded-full'>
-                                <i
-                                    onClick={() => {
-                                        addProductToWishList(product._id);
-                                        toggleLike(product._id);
-                                    }}
-                                    className={`fa-${likedProducts[product._id] ? 'solid' : 'regular'} fa-heart text-2xl text-active`}
-                                ></i>
-                            </div>
+
                             <Link to={`/ProductDetails/${product._id}`}>
                                 <div className="item p-3 overflow-hidden cursor-pointer">
                                     <img src={product.imageCover} alt={product.title} className='w-full md:h-[200px] object-cover' />
@@ -104,9 +100,10 @@ console.log("Token is: ", token);
                         </div>
                         <button
                             onClick={() => addProductToCart(product._id)}
-                            className="flex justify-center items-center translate-y-24 group-hover:translate-y-0 ease-in hover:bg-green-600 duration-200 bg-active text-white px-6 py-2 rounded-lg w-full mt-4"
+                            disabled={loading === product._id}
+                            className={`flex justify-center items-center  ease-in-out    duration-200  text-white space-x-3 py-2 rounded-lg w-full mt-4 ${loading === product._id ? 'bg-active/55 cursor-not-allowed' : 'bg-active hover:bg-active/75'}`}
                         >
-                            Add to Cart <i className="fa-solid fa-cart-shopping ml-2"></i>
+                            {loading === product._id ? (<span className='w-6 h-6 bg-transparent  border-2 border-white border-b-transparent animate-spin rounded-full'> </span>) : (<> <i className="fa-solid fa-cart-shopping "></i><span>Add to Cart</span></>)}
                         </button>
                     </div>
                 ))}

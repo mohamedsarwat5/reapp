@@ -20,6 +20,8 @@ import CartContextProvider from "./Context/CartContext";
 import { Toaster } from "react-hot-toast";
 import { HeroUIProvider } from "@heroui/react";
 import WishList from "./components/WishList/WishList";
+import ShippingAddress from "./components/shippingAddress/shippingAddress";
+import AllOrders from "./components/AllOrders/AllOrders";
 
 export default function App() {
     let queryclient = new QueryClient();
@@ -36,6 +38,22 @@ export default function App() {
                     element: (
                         <ProtectedRouting>
                             <Cart></Cart>
+                        </ProtectedRouting>
+                    ),
+                },
+                {
+                    path: "ShippingAddress/:id",
+                    element: (
+                        <ProtectedRouting>
+                            <ShippingAddress></ShippingAddress>
+                        </ProtectedRouting>
+                    ),
+                },
+                {
+                    path: "allorders",
+                    element: (
+                        <ProtectedRouting>
+                            <AllOrders></AllOrders>
                         </ProtectedRouting>
                     ),
                 },

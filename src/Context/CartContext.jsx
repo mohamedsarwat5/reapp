@@ -15,7 +15,7 @@ export default function CartContextProvider(props) {
             .catch(error => error)
     }
     function displayWishList() {
-        let headers = { token: localStorage.getItem('token') }
+        const headers = { token: localStorage.getItem('token') }
 
         return axios.get(`https://ecommerce.routemisr.com/api/v1/wishlist`, { headers })
             .then(request => request)

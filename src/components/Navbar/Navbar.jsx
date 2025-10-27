@@ -24,7 +24,7 @@ export default function Navbar() {
         "brands",
     ];
 
-    const menu = ['cart', 'wishlist']
+    const menu = ['cart']
 
     function logout() {
         localStorage.removeItem("token");
@@ -56,13 +56,13 @@ export default function Navbar() {
 
             {/* menu links */}
             <div
-                className={`${isMenuOpen ? "flex" : "hidden"} md:flex flex-col md:flex-row items-center  md:justify-between  absolute w-full  right-0 top-14 md:relative md:top-0`}>
+                className={`${isMenuOpen ? "flex" : "hidden"} md:flex flex-col md:flex-row items-center transition-all duration-300 ease-in-out md:justify-between  absolute w-full  right-0 top-14 md:relative md:top-0`}>
                 <ul className="font-medium  text-xl flex  flex-col p-4 md:p-0 mt-4 border w-full border-gray-100 rounded-lg bg-gray-50 md:flex-row  gap-5  md:mt-0 md:border-0 md:bg-white">
                     {menuList.map((list, index) => (
                         <li key={index}>
                             <NavLink
                                 key={index}
-                                onClick={toggleMenu}
+                                onClick={() => setIsMenuOpen(false)}
                                 to={list === "home" ? "/" : `/${list}`}
                                 className="link">
                                 {list}
@@ -70,7 +70,7 @@ export default function Navbar() {
                         </li>))}
 
                     {token && menu.map((link, i) => (<li key={i}>
-                        <NavLink to={`/${link}`} className={`link`}>{link}</NavLink>
+                        <NavLink onClick={() => setIsMenuOpen(false)} to={`/${link}`} className={`link`}>{link}</NavLink>
                     </li>))}
                 </ul>
                 {/* *********************** SOCIAL ICONS *****************/}
@@ -87,7 +87,7 @@ export default function Navbar() {
                     <div className="flex items-center gap-4">
                         {token ? (<>
                             <h4 className="hover:cursor-pointer bg-transparent hover:text-white uppercase font-semibold hover:bg-active duration-150  text-active  border-active border-2 w-10 h-10 items-center justify-center flex rounded-full ">
-                                {user?.name.split(' ').slice(0, 2).map(word =>word.charAt(0))}
+                                {user?.name.split(' ').slice(0, 2).map(word => word.charAt(0))}
                             </h4>
                             <button onClick={() => {
                                 logout();
