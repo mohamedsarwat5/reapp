@@ -20,8 +20,9 @@ import CartContextProvider from "./Context/CartContext";
 import { Toaster } from "react-hot-toast";
 import { HeroUIProvider } from "@heroui/react";
 import WishList from "./components/WishList/WishList";
-import ShippingAddress from "./components/shippingAddress/shippingAddress";
+
 import AllOrders from "./components/AllOrders/AllOrders";
+import ShippingAddress from "./components/shippingAddress/shippingAddress";
 
 export default function App() {
     let queryclient = new QueryClient();
