@@ -41,7 +41,7 @@ export default function AllOrders() {
                 </section>
             </div>) : (<div className='min-h-screen  '>
                 <div className="relative overflow-x-auto max-w-2xl mx-auto mt-24 ">
-                    <table className="w-full text-sm text-left rtl:text-right text-gray-800 ">
+                    <table className="w-full text-sm text-center rtl:text-right text-gray-800 ">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
                             <tr>
                                 <th scope="col" className="px-6 py-3 whitespace-nowrap">
