@@ -56,6 +56,9 @@ export default function AllOrders() {
                                 <th scope="col" className="px-6 py-3">
                                     Price
                                 </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Paid At
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -73,6 +76,9 @@ export default function AllOrders() {
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">
                                         {item.totalOrderPrice} EGP
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap">
+                                        {new Date(item.paidAt).toISOString().split('T')[0]} - {new Date(item.paidAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                     </td>
                                 </tr>
                             ))}
