@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AuthContext } from '../../Context/AuthContextProvider'
 
-export default function ShippingAddress() {
+export default function Shipping() {
     const { token } = useContext(AuthContext)
     const [loading, setLoading] = useState(false)
     const { id } = useParams()
@@ -33,7 +33,6 @@ export default function ShippingAddress() {
         initialValues,
         onSubmit: handlePay
     })
-
     return (
         <div className='min-h-screen'>
             <h2 className='mt-24 text-center font-semibold text-xl'>Shipping Details</h2>
@@ -54,7 +53,7 @@ export default function ShippingAddress() {
                     {formikPay.touched.phone && formikPay.errors.phone ? <p className='text-red-700'>{formikPay.errors.phone}</p> : ''}
                 </div>
                 <button disabled={loading} className={`${loading ? "bg-active/75 cursor-not-allowed" : "bg-active border-active hover:bg-transparent hover:text-active border"} mt-3 w-full px-6 py-2 text-white border-1  rounded-lg duration-150 border-active hover:bg-transparent hover:text-active border flex justify-center items-center `}>
-                    {loading ? (<span className='w-6 h-6 bg-transparent block  border-2 border-white border-b-transparent animate-spin rounded-full'> </span>) : ( <span>Procced to Pay</span>)}
+                    {loading ? (<span className='w-6 h-6 bg-transparent block  border-2 border-white border-b-transparent animate-spin rounded-full'> </span>) : (<span>Procced to Pay</span>)}
                 </button>
             </form>
         </div>

@@ -22,7 +22,7 @@ import { HeroUIProvider } from "@heroui/react";
 import WishList from "./components/WishList/WishList";
 
 import AllOrders from "./components/AllOrders/AllOrders";
-import ShippingAddress from "./components/shippingAddress/shippingAddress";
+import Shipping from "./components/Shipping/Shipping";
 
 
 
@@ -45,10 +45,10 @@ export default function App() {
                     ),
                 },
                 {
-                    path: "ShippingAddress/:id",
+                    path: "shipping/:id",
                     element: (
                         <ProtectedRouting>
-                            <ShippingAddress></ShippingAddress>
+                            <Shipping />
                         </ProtectedRouting>
                     ),
                 },

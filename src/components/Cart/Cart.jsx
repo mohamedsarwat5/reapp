@@ -163,7 +163,7 @@ export default function Cart() {
                                 </tr>
                             </tfoot>
                         </table>
-                        <Link to={`/ShippingAddress/`+cartdetails?.cartId} className='bg-active py-2 px-5 text-white rounded-md mx-auto block w-6/12 lg:w-10/12 text-center capitalize'><i className='fa-brands fa-cc-visa'></i> pay now</Link>
+                        <Link to={`/shipping/`+cartdetails?.cartId} className='bg-active py-2 px-5 text-white rounded-md mx-auto block w-6/12 lg:w-10/12 text-center capitalize'><i className='fa-brands fa-cc-visa'></i> pay now</Link>
                     </div>
 
 
