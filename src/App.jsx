@@ -24,6 +24,8 @@ import WishList from "./components/WishList/WishList";
 import AllOrders from "./components/AllOrders/AllOrders";
 import ShippingAddress from "./components/shippingAddress/shippingAddress";
 
+
+
 export default function App() {
     let queryclient = new QueryClient();
 
