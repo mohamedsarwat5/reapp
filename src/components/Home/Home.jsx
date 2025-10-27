@@ -99,7 +99,7 @@ export default function Home() {
         {data?.data?.data?.map((product, i) => (
 
           <div key={product._id} className=' w-full px-3 group overflow-hidden '>
-            <div className='relative'>
+            <div className=''>
 
               <Link to={`/ProductDetails/${product._id}`}>
                 <div className="item p-3 overflow-hidden cursor-pointer">
@@ -139,7 +139,7 @@ export default function Home() {
             <button
               disabled={currentPage === 1}
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 "
             >
               Previous
             </button>
@@ -160,7 +160,7 @@ export default function Home() {
             <button
               disabled={currentPage === pageNumbers.length}
               onClick={() => setCurrentPage((prev) => Math.min(prev + 1, pageNumbers.length))}
-              className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 "
             >
               Next
             </button>

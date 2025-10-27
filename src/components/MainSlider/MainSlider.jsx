@@ -26,7 +26,7 @@ export default function MainSlider() {
         slidesToScroll: 1,
         autoplay: true,
         arrows: false,
-        infinite: true,
+        pauseOnHover: false,
         responsive: [
             {
                 breakpoint: 1024,
@@ -72,14 +72,14 @@ export default function MainSlider() {
             <div className="w-full md:w-9/12 mx-auto ">
                 <Slider   {...settings} >
                     {images.map((image, index) => (
-                        <div key={index}>
-                            <img src={image} className="w-full h-96 object-cover object-right" />
+                        <div key={index} className="lg:rounded-none rounded-xl overflow-hidden">
+                            <img src={image} className="w-full h-[200px] lg:h-96 object-cover object-right" />
                         </div>
                     ))}
                 </Slider>
             </div>
 
-            <div className=" w-full flex md:flex-col flex-row gap-0 md:w-3/12">
+            <div className=" w-full hidden lg:flex md:flex-col flex-row gap-0 md:w-3/12 rounded-xl lg:rounded-none overflow-hidden">
                 <div><img src={img3} className=" md:h-48 w-full object-cover" alt="" /></div>
                 <div><img src={img2} className=" md:h-48 w-full object-cover" alt="" /></div>
             </div>
