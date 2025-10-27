@@ -23,8 +23,8 @@ export default function Shipping() {
         const data = {
             shippingAddress: values
         }
-
-        axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://localhost:5173`, data, headerOption)
+        const baseURL = window.location.origin;
+        axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=${baseURL}`, data, headerOption)
             .then((request) => {
                 window.open(request.data.session.url, "_self")
             }).finally(() => setLoading(false))
