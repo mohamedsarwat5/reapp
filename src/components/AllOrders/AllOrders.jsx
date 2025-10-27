@@ -71,7 +71,7 @@ export default function AllOrders() {
                                     <td className="px-6 py-4">
                                         {item.paymentMethodType}
                                     </td>
-                                    <td className="px-6 py-4">
+                                    <td className="px-6 py-4 whitespace-nowrap">
                                         {item.totalOrderPrice} EGP
                                     </td>
                                 </tr>
