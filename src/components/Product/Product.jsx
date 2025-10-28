@@ -77,6 +77,9 @@ export default function Home() {
 
     return (
         <div className="w-11/12 my-5 mx-auto">
+            <div>
+
+            </div>
             <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 space-y-3 py-20'>
                 {data?.data?.data?.map((product) => (
                     <div key={product._id} className='w-full px-3 overflow-hidden group mt-2'>

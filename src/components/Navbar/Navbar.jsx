@@ -24,7 +24,7 @@ export default function Navbar() {
         "brands",
     ];
 
-    const menu = ['cart']
+    const menu = ['cart', 'allorders']
 
     function logout() {
         localStorage.removeItem("token");
@@ -65,12 +65,12 @@ export default function Navbar() {
                                 onClick={() => setIsMenuOpen(false)}
                                 to={list === "home" ? "/" : `/${list}`}
                                 className="link">
-                                {list}
+                                {`${list==='product'?'all products':list}`}
                             </NavLink>
                         </li>))}
 
                     {token && menu.map((link, i) => (<li key={i}>
-                        <NavLink onClick={() => setIsMenuOpen(false)} to={`/${link}`} className={`link`}>{link}</NavLink>
+                        <NavLink onClick={() => setIsMenuOpen(false)} to={`/${link}`} className={`link `}>{`${link==='allorders'?'all orders':link}`}</NavLink>
                     </li>))}
                 </ul>
                 {/* *********************** SOCIAL ICONS *****************/}

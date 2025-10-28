@@ -40,7 +40,7 @@ export default function AllOrders() {
                     <div className="dot"></div>
                 </section>
             </div>) : (<div className='min-h-screen  '>
-                <div className="relative overflow-x-auto max-w-2xl mx-auto mt-24 ">
+                <div className="relative overflow-x-auto max-w-5xl mx-auto mt-24 ">
                     <table className="w-full text-sm text-center rtl:text-right text-gray-800 ">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
                             <tr>
