@@ -52,7 +52,7 @@ export default function Shipping() {
                     <input value={formikPay.values.phone} onChange={formikPay.handleChange} onBlur={formikPay.handleBlur} name='phone' type="text" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-active focus:border-active block w-full p-2.5 " />
                     {formikPay.touched.phone && formikPay.errors.phone ? <p className='text-red-700'>{formikPay.errors.phone}</p> : ''}
                 </div>
-                <button disabled={loading} className={`${loading ? "bg-active/75 cursor-not-allowed" : "bg-active border-active hover:bg-transparent hover:text-active border"} mt-3 w-full px-6 py-2 text-white border-1  rounded-lg duration-150 border-active hover:bg-transparent hover:text-active border flex justify-center items-center `}>
+                <button disabled={loading} className={`${loading ? "bg-active/75 cursor-not-allowed" : "bg-active border-active  hover:text-active border"} mt-3 w-full px-6 py-2 text-white border-1  rounded-lg duration-150 border-active hover:bg-transparent hover:text-active border flex justify-center items-center `}>
                     {loading ? (<span className='w-6 h-6 bg-transparent block  border-2 border-white border-b-transparent animate-spin rounded-full'> </span>) : (<span>Procced to Pay</span>)}
                 </button>
             </form>
