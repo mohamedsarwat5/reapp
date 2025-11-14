@@ -63,7 +63,7 @@ export default function AllOrders() {
                         </thead>
                         <tbody>
 
-                            {orderDetails?.map((item, i) => (
+                            {orderDetails?.sort((a, b) => new Date(b.paidAt) - new Date(a.paidAt)).map((item, i) => (
                                 <tr key={i} className="bg-white border-b  border-gray-200">
                                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                                         {item.id}
