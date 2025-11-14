@@ -80,17 +80,17 @@ export default function Home() {
             <div>
 
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 space-y-3 py-20'>
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 py-20'>
                 {data?.data?.data?.map((product) => (
-                    <div key={product._id} className='w-full px-3 overflow-hidden group mt-2'>
+                    <div key={product._id} className='w-full rounded-lg  overflow-hidden group mt-2'>
                         <div className='relative'>
 
                             <Link to={`/ProductDetails/${product._id}`}>
-                                <div className="item p-3 overflow-hidden cursor-pointer">
-                                    <img src={product.imageCover} alt={product.title} className='w-full md:h-[200px] object-cover' />
+                                <div className="item  overflow-hidden cursor-pointer">
+                                    <img src={product.imageCover} alt={product.title} className='w-full h-[400px] md:h-[200px] object-cover' />
                                     <div className='flex flex-col'>
-                                        <h5 className='font-bold mt-5 text-lg'>{product.title.split(" ").slice(0, 2).join(" ")}</h5>
-                                        <p className='mb-2'>{product.category.name}</p>
+                                        <h5 className='font-bold mt-5 text-base lg:text-lg '>{product.title.split(" ").slice(0, 2).join(" ")}</h5>
+                                        <p className='mb-2 text-sm'>{product.category.name}</p>
                                     </div>
                                     <div className='flex justify-between items-center'>
                                         <p className='text-green-800 font-bold'>{product.price} EGP</p>

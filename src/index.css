@@ -130,3 +130,7 @@ body {
     box-shadow: 0 0 0 0 rgba(178, 252, 187, 0.7);
   }
 }
+
+.slick-track , .slick-list {
+  margin-bottom: 0 !important;
+}

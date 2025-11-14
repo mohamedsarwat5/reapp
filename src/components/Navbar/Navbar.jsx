@@ -87,7 +87,7 @@ export default function Navbar() {
                     <div className="flex items-center gap-4">
                         {token ? (<>
                             <h4 className="hover:cursor-pointer bg-transparent hover:text-white uppercase font-semibold hover:bg-active duration-150  text-active  border-active border-2 w-10 h-10 items-center justify-center flex rounded-full ">
-                                {user?.name.split(' ').slice(0, 2).map(word => word.charAt(0))}
+                                {user?.name?.split(' ').slice(0, 2).map(word => word.charAt(0))}
                             </h4>
                             <button onClick={() => {
                                 logout();

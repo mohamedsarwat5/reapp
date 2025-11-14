@@ -5,7 +5,6 @@ import Slider from 'react-slick'
 export default function CategorySlider() {
 
 
-
     let [categoryList, setcategoryList] = useState(null)
 
     function getAllCategory() {
@@ -20,8 +19,10 @@ export default function CategorySlider() {
 
     let settings = {
         slidesToShow: 6,
-        slidesToScroll: 5,
-        speed: 500,
+        slidesToScroll: 1,
+        speed: 200,
+        pauseOnHover: false,
+
         infinite: true,
         autoplay: true,
         responsive: [
@@ -29,16 +30,24 @@ export default function CategorySlider() {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToScroll: 1,
+                    speed: 200,
+                    pauseOnHover: false,
+
+
                     infinite: true,
-                    dots: true
+                    dots: false
                 }
             },
             {
                 breakpoint: 600,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToScroll: 1,
+                    speed: 200,
+                    pauseOnHover: false,
+
+
                     initialSlide: 2
                 }
             },
@@ -47,7 +56,9 @@ export default function CategorySlider() {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1,
-                    speed: 300,
+                    speed: 200,
+                    pauseOnHover: false,
+
                     infinite: true,
                     autoplay: true,
                 }
@@ -57,12 +68,12 @@ export default function CategorySlider() {
 
     return (<>
 
-        <div className='my-5 overflow-hidden'>
+        <div className='mt-1 overflow-hidden mb-4 slick-container h-[200px] md:h-[220px]'>
             <Slider {...settings} >
                 {categoryList?.map(el => {
                     return (
-                        <div key={el._id}>
-                            <img src={el.image} className='h-40 w-40 mx-auto rounded-full  object-cover object-top' alt="" />
+                        <div key={el._id} className='p-1   '>
+                            <img src={el.image} className='h-40 w-full mx-auto rounded-lg  object-cover object-top' alt="" />
                             <h5 className='text-center font-bold mt-2'>{el.name}</h5>
                         </div>
                     )

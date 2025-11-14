@@ -33,16 +33,15 @@ export default function Brands() {
 
   return (<>
 
-    <div className="w-11/12 my-5 mx-auto">
-      <div className='flex flex-wrap  '>
+    <div className="w-11/12 my-5 mx-auto pt-20">
+      <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 gap-y-4 '>
         {data?.data.data.map((brand) => {
           let { name, image, _id } = brand
           return <>
-            <div key={_id} className='lg:w-2/12 md:w-3/12 sm:w-6/12 w-full px-3 py-11 mt-4'>
-              <div className="item p-5 group overflow-hidden rounded-full mx-auto w-48 h mx-auto-w-48 shadow-xl bg-white">
-                <img src={image} alt={name} className='w-full ' />
-                <h5 className='font-bold mt-5 text-lg text-center'>{name}</h5>
-              </div>
+
+            <div key={_id} className="item p-5 group overflow-hidden rounded-lg mx-auto w-full border mx-auto-w-48 shadow-md bg-white ">
+              <img src={image} alt={name} className='w-full ' />
+              <h5 className='font-bold mt-5 text-md text-center'>{name}</h5>
             </div>
           </>
         })}
