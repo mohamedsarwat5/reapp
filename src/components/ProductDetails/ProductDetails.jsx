@@ -8,7 +8,7 @@ import { AuthContext } from '../../Context/AuthContextProvider'
 
 export default function ProductDetails() {
 
-    let { addToCart } = useContext(CartContext)
+    let { addToCart ,addToWishList } = useContext(CartContext)
     const { token } = useContext(AuthContext)
 
     let [product, setProduct] = useState(null)
@@ -33,6 +33,25 @@ export default function ProductDetails() {
         }
         console.log(response)
 
+    }
+
+    const addProductToWishList = async (productId) => {
+        try {
+
+            if (!token) {
+                return toast.error("You should login first");
+            }
+            const response = await addToWishList(productId);
+            if (response.data.status === 'success') {
+                toast.success("Product added to your Wishlist", {
+                    position: 'top-center',
+                    duration: 2000,
+                    style: { color: '#0aad0a' }
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     function getDetails(id) {
@@ -85,6 +104,8 @@ export default function ProductDetails() {
                     </div>
                     <button onClick={() => { addProductToCart(product._id) }} className="flex justify-center items-center hover:bg-green-600 duration-200 bg-active text-white px-6 py-2 rounded-lg w-full mt-4">
                         Add to Cart <i className="fa-solid fa-cart-shopping ml-2"></i></button>
+                        <button onClick={() => { addProductToWishList(product._id) }} className="flex justify-center items-center hover:bg-red-600 duration-200 bg-active text-white px-6 py-2 rounded-lg w-full mt-4">
+                        Add to Wishlist <i className="fa-solid fa-heart ml-2"></i></button>
                 </div>
             </div>
         </div>}

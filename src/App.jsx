@@ -45,6 +45,14 @@ export default function App() {
                     ),
                 },
                 {
+                    path: "wishlist",
+                    element: (
+                        <ProtectedRouting>
+                            <WishList></WishList>
+                        </ProtectedRouting>
+                    ),
+                },
+                {
                     path: "shipping/:id",
                     element: (
                         <ProtectedRouting>

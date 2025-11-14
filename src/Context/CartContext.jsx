@@ -31,6 +31,13 @@ export default function CartContextProvider(props) {
             .catch(error => error)
     }
 
+    function removeProductFromWishListtItems(productId) {
+        let headers = { token: localStorage.getItem('token') }
+
+        return axios.delete(`https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`, { headers })
+            .then(response => response)
+            .catch(error => error)
+    }
 
     function addToWishList(productId) {
         let headers = { token: localStorage.getItem('token') }
@@ -47,13 +54,7 @@ export default function CartContextProvider(props) {
             .catch(error => error)
     }
 
-    function removeWishListtItems() {
-        let headers = { token: localStorage.getItem('token') }
-
-        return axios.delete(`https://ecommerce.routemisr.com/api/v1/wishlist/`, { headers })
-            .then(response => response)
-            .catch(error => error)
-    }
+ 
 
     function updateCartItems(productId, count) {
         let headers = { token: localStorage.getItem('token') }
@@ -66,7 +67,7 @@ export default function CartContextProvider(props) {
     }
 
 
-    return <CartContext.Provider value={{ addToCart, getCartItems, removeCartItems, updateCartItems, addToWishList, displayWishList, removeWishListtItems }}>
+    return <CartContext.Provider value={{ addToCart, getCartItems, removeCartItems, updateCartItems, addToWishList, displayWishList, removeProductFromWishListtItems }}>
         {props.children}
     </CartContext.Provider>
 }
